@@ -50,6 +50,64 @@
 
 		})(args,{},[1]);
       </pre>
+      <pre>
+    	function () {
+    	
+			var ReactDOM = _dereq_(35);
+			var ReactDOMServer = _dereq_(45);
+			var ReactIsomorphic = _dereq_(63);
+
+			var assign = _dereq_(23);
+			var deprecated = _dereq_(106);
+			var React = {};
+
+			assign(React, ReactIsomorphic);
+
+			assign(React, {
+				// ReactDOM
+				findDOMNode: deprecated(
+					'findDOMNode', 
+					'ReactDOM', 
+					'react-dom', 
+					ReactDOM, 
+					ReactDOM.findDOMNode),
+
+				render: deprecated(
+					'render', 
+					'ReactDOM', 
+					'react-dom', 
+					ReactDOM, 
+					ReactDOM.render),
+
+				unmountComponentAtNode: deprecated(
+					'unmountComponentAtNode', 
+					'ReactDOM', 
+					'react-dom', 
+					ReactDOM, 
+					ReactDOM.unmountComponentAtNode),
+
+				// ReactDOMServer
+				renderToString: deprecated(
+					'renderToString', 
+					'ReactDOMServer', 
+					'react-dom/server', 
+					ReactDOMServer, R
+					eactDOMServer.renderToString),
+
+				renderToStaticMarkup: deprecated(
+					'renderToStaticMarkup', 
+					'ReactDOMServer', 
+					'react-dom/server', 
+					ReactDOMServer, 
+					ReactDOMServer.renderToStaticMarkup)
+			});
+
+			React.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOM;
+			React.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOMServer;
+
+			module.exports = React;
+    	}
+      </pre>
     </section>
     
   
