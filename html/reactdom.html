@@ -20,7 +20,36 @@
     </section>
 
     <section class="main-content">
-      <p>建设中，请稍后 <pre>construction...</pre></p>
+      <pre>
+       var ReactCurrentOwner = {current: null};
+       var ReactDOMTextComponent = _dereq_(46);
+       var ReactDefaultInjection = _dereq_(49);
+       var ReactInstanceHandles = _dereq_(61);
+       var ReactMount = _dereq_(65);
+       var ReactPerf = _dereq_(71);
+       var ReactReconciler = _dereq_(76);
+       var ReactUpdates = _dereq_(83);
+       var ReactVersion = _dereq_(84);
+
+       var findDOMNode = _dereq_(108);
+       var renderSubtreeIntoContainer = _dereq_(123);
+       var warning = _dereq_(155);
+
+       ReactDefaultInjection.inject();
+
+       var render = ReactPerf.measure('React', 'render', ReactMount.render);
+
+       var React = {
+         findDOMNode: findDOMNode,
+         render: render,
+         unmountComponentAtNode: ReactMount.unmountComponentAtNode,
+         version: ReactVersion,
+
+         /* eslint-disable camelcase */
+         unstable_batchedUpdates: ReactUpdates.batchedUpdates,
+         unstable_renderSubtreeIntoContainer: renderSubtreeIntoContainer
+       };
+      </pre>
     </section>
     
   

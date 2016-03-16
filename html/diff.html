@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Reactsoucecode Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Reactsoucecode</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/emobossemo/reactSouceCode" class="btn">View on GitHub</a>
+      <a href="https://github.com/emobossemo/reactSouceCode/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/emobossemo/reactSouceCode/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      tree diff
+      <pre>
+        updateChildren: function(prevChildren, nextChildren, transaction, context) {
+           // We currently don't have a way to track moves here but if we use iterators
+           // instead of for..in we can zip the iterators and check if an item has
+           // moved.
+           // TODO: If nothing has changed, return the prevChildren object so that we
+           // can quickly bailout if nothing has changed.
+           if (!nextChildren && !prevChildren) {
+             return null;
+           }
+           var name;
+           for (name in nextChildren) {
+             if (!nextChildren.hasOwnProperty(name)) {
+               continue;
+             }
+             var prevChild = prevChildren && prevChildren[name];
+             var prevElement = prevChild && prevChild._currentElement;
+             var nextElement = nextChildren[name];
+             if (prevChild != null && shouldUpdateReactComponent(prevElement, nextElement)) {
+               ReactReconciler.receiveComponent(prevChild, nextElement, transaction, context);
+               nextChildren[name] = prevChild;
+             } else {
+               if (prevChild) {
+                 ReactReconciler.unmountComponent(prevChild, name);
+               }
+               // The child must be instantiated before it's mounted.
+               var nextChildInstance = instantiateReactComponent(nextElement, null);
+               nextChildren[name] = nextChildInstance;
+             }
+           }
+           // Unmount children that are no longer present.
+           for (name in prevChildren) {
+             if (prevChildren.hasOwnProperty(name) && !(nextChildren && nextChildren.hasOwnProperty(name))) {
+               ReactReconciler.unmountComponent(prevChildren[name]);
+             }
+           }
+           return nextChildren;
+         }
+      </pre>
+      component diff
+      <pre>
+        
+        function enqueueInsertMarkup(parentID, markup, toIndex) {
+         // NOTE: Null values reduce hidden classes.
+         updateQueue.push({
+           parentID: parentID,
+           parentNode: null,
+           type: ReactMultiChildUpdateTypes.INSERT_MARKUP,
+           markupIndex: markupQueue.push(markup) - 1,
+           content: null,
+           fromIndex: null,
+           toIndex: toIndex
+         });
+       }
+
+       function enqueueMove(parentID, fromIndex, toIndex) {
+         // NOTE: Null values reduce hidden classes.
+         updateQueue.push({
+           parentID: parentID,
+           parentNode: null,
+           type: ReactMultiChildUpdateTypes.MOVE_EXISTING,
+           markupIndex: null,
+           content: null,
+           fromIndex: fromIndex,
+           toIndex: toIndex
+         });
+       }
+
+       function enqueueRemove(parentID, fromIndex) {
+         // NOTE: Null values reduce hidden classes.
+         updateQueue.push({
+           parentID: parentID,
+           parentNode: null,
+           type: ReactMultiChildUpdateTypes.REMOVE_NODE,
+           markupIndex: null,
+           content: null,
+           fromIndex: fromIndex,
+           toIndex: null
+         });
+       }
+
+       function enqueueSetMarkup(parentID, markup) {
+         // NOTE: Null values reduce hidden classes.
+         updateQueue.push({
+           parentID: parentID,
+           parentNode: null,
+           type: ReactMultiChildUpdateTypes.SET_MARKUP,
+           markupIndex: null,
+           content: markup,
+           fromIndex: null,
+           toIndex: null
+         });
+       }
+
+       function enqueueTextContent(parentID, textContent) {
+         // NOTE: Null values reduce hidden classes.
+         updateQueue.push({
+           parentID: parentID,
+           parentNode: null,
+           type: ReactMultiChildUpdateTypes.TEXT_CONTENT,
+           markupIndex: null,
+           content: textContent,
+           fromIndex: null,
+           toIndex: null
+         });
+       }
+      </pre>
+      element diff
+      <pre>
+        _updateChildren: function(nextNestedChildrenElements, transaction, context) {
+             var prevChildren = this._renderedChildren;
+             var nextChildren = this._reconcilerUpdateChildren(prevChildren, nextNestedChildrenElements, transaction, context);
+             this._renderedChildren = nextChildren;
+             if (!nextChildren && !prevChildren) {
+               return;
+             }
+             var name;
+             // `nextIndex` will increment for each child in `nextChildren`, but
+             // `lastIndex` will be the last index visited in `prevChildren`.
+             var lastIndex = 0;
+             var nextIndex = 0;
+             for (name in nextChildren) {
+               if (!nextChildren.hasOwnProperty(name)) {
+                 continue;
+               }
+               var prevChild = prevChildren && prevChildren[name];
+               var nextChild = nextChildren[name];
+               if (prevChild === nextChild) {
+                 this.moveChild(prevChild, nextIndex, lastIndex);
+                 lastIndex = Math.max(prevChild._mountIndex, lastIndex);
+                 prevChild._mountIndex = nextIndex;
+               } else {
+                 if (prevChild) {
+                   // Update `lastIndex` before `_mountIndex` gets unset by unmounting.
+                   lastIndex = Math.max(prevChild._mountIndex, lastIndex);
+                   this._unmountChild(prevChild);
+                 }
+                 // The child must be instantiated before it's mounted.
+                 this._mountChildByNameAtIndex(nextChild, name, nextIndex, transaction, context);
+               }
+               nextIndex++;
+             }
+             // Remove children that are no longer present.
+             for (name in prevChildren) {
+               if (prevChildren.hasOwnProperty(name) && !(nextChildren && nextChildren.hasOwnProperty(name))) {
+                 this._unmountChild(prevChildren[name]);
+               }
+             }
+           }
+
+
+           unmountChildren: function() {
+             var renderedChildren = this._renderedChildren;
+             ReactChildReconciler.unmountChildren(renderedChildren);
+             this._renderedChildren = null;
+           },
+
+
+           moveChild: function(child, toIndex, lastIndex) {
+             // If the index of `child` is less than `lastIndex`, then it needs to
+             // be moved. Otherwise, we do not need to move it because a child will be
+             // inserted or moved before `child`.
+             if (child._mountIndex < lastIndex) {
+               enqueueMove(this._rootNodeID, child._mountIndex, toIndex);
+             }
+           },
+
+
+           createChild: function(child, mountImage) {
+             enqueueInsertMarkup(this._rootNodeID, mountImage, child._mountIndex);
+           },
+
+           removeChild: function(child) {
+             enqueueRemove(this._rootNodeID, child._mountIndex);
+           },
+
+
+           setTextContent: function(textContent) {
+             enqueueTextContent(this._rootNodeID, textContent);
+           },
+
+
+           setMarkup: function(markup) {
+             enqueueSetMarkup(this._rootNodeID, markup);
+           },
+
+
+           _mountChildByNameAtIndex: function(child, name, index, transaction, context) {
+             // Inlined for performance, see `ReactInstanceHandles.createReactID`.
+             var rootID = this._rootNodeID + name;
+             var mountImage = ReactReconciler.mountComponent(child, rootID, transaction, context);
+             child._mountIndex = index;
+             this.createChild(child, mountImage);
+           },
+
+
+           _unmountChild: function(child) {
+             this.removeChild(child);
+             child._mountIndex = null;
+           }
+      </pre>
+    </section>
+    
+  
+  </body>
+</html>
