@@ -161,7 +161,7 @@
 	      { className: 'commentForm' },
 	      React.createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: 'row text-center' },
 	        React.createElement('input', {
 	          type: 'text',
 	          placeholder: 'Your name',
@@ -171,7 +171,7 @@
 	      ),
 	      React.createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: 'row text-center' },
 	        React.createElement('input', {
 	          type: 'text',
 	          placeholder: 'Say something...',
@@ -181,7 +181,7 @@
 	      ),
 	      React.createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: 'row text-center' },
 	        React.createElement('input', { type: 'submit', value: 'Post' })
 	      )
 	    );

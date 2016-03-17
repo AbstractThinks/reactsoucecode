@@ -11,7 +11,7 @@ var CommentForm = React.createClass({
   render: function() {
     return (
       <form className="commentForm">
-        <div className="row">
+        <div className="row text-center">
         <input
           type="text"
           placeholder="Your name"
@@ -19,7 +19,7 @@ var CommentForm = React.createClass({
           onChange={this.handleAuthorChange}
         />
         </div>
-        <div className="row">
+        <div className="row text-center">
         <input
           type="text"
           placeholder="Say something..."
@@ -27,7 +27,7 @@ var CommentForm = React.createClass({
           onChange={this.handleTextChange}
         />
         </div>
-        <div className="row">
+        <div className="row text-center">
         <input type="submit" value="Post" />
         </div>
       </form>
