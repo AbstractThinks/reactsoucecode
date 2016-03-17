@@ -1,17 +1,32 @@
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-       entry1: './componet/comment/commentBox.js'
+       app: './components/app.js'
   },
   output:{
-		path:'./build/',
-		filename: '[name].js',
+		path:'./build',
+		filename: '/js/[name].js',
 		chunkFilename: '[id].bundle.js'
   },
   module: {
     loaders: [
-      { test: /\.jsx$/,    loader: "jsx-loader" }
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
+        query: {
+          presets: ['react', 'es2015']
+        }
+      },
+      {
+        test: /\.scss$/,
+        loader:ExtractTextPlugin.extract("css!sass")
+      }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin("./style/[name].css"),
+  ]
 };
