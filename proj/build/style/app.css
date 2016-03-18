@@ -1,13 +1,45 @@
-html, body {
+html, body, ul, li {
   margin: 0;
   padding: 0; }
 
-.commentBox {
+.container {
   margin-left: auto;
-  margin-right: auto;
-  max-width: 500px;
+  margin-right: auto; }
+
+.row {
+  display: block;
+  padding: 5px 8px; }
+
+.text-center {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
+
+.text-left {
+  text-align: left; }
+
+.hidden {
+  visibility: hidden; }
+
+.show {
+  visibility: visible; }
+
+input[type='text'] {
+  border: 1px solid #DADADA;
+  color: #888;
+  height: 30px;
+  outline: 0 none;
+  padding: 3px 3px 3px 5px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 15px;
+  box-shadow: inset 0px 1px 4px #ECECEC;
+  -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+  -webkit-box-shadow: inset 0px 1px 4px #ECECEC; }
+
+.commentBox {
   background: #F7F7F7;
-  padding: 25px 15px 25px 10px;
   font: 12px Georgia, "Times New Roman", Times, serif;
   color: #888;
   text-shadow: 1px 1px 1px #FFF;
@@ -17,23 +49,10 @@ html, body {
   text-align: center; }
 
 input[type='text'] {
-  border: 1px solid #DADADA;
-  color: #888;
-  height: 30px;
-  margin-bottom: 16px;
-  margin-right: 6px;
-  margin-top: 2px;
-  outline: 0 none;
-  padding: 3px 3px 3px 5px;
-  width: 70%;
-  font-size: 12px;
-  line-height: 15px;
-  box-shadow: inset 0px 1px 4px #ECECEC;
-  -moz-box-shadow: inset 0px 1px 4px #ECECEC;
-  -webkit-box-shadow: inset 0px 1px 4px #ECECEC; }
+  width: 80%; }
 
 input[type='submit'] {
-  width: 70%;
+  width: 80%;
   background: #E27575;
   border: none;
   padding: 10px 25px 10px 25px;
@@ -42,8 +61,58 @@ input[type='submit'] {
   border-radius: 3px;
   text-shadow: 1px 1px 1px #9E3F3F;
   cursor: pointer; }
+  input[type='submit']:hover {
+    background: #CF7A7A; }
 
-input[type='submit']:hover {
-  background: #CF7A7A; }
+.navbox {
+  color: #888;
+  background-color: #F7F7F7; }
+  .navbox .brand-navbox, .navbox .menu-navbox, .navbox .search-navbox {
+    display: inline-flex; }
+  .navbox .menu-navbox li {
+    display: inline-block;
+    list-style-type: none; }
+  .navbox .search-navbox input {
+    background: #fefefe;
+    border: none;
+    font: 12px Georgia, "Times New Roman", Times, serif;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset, 1px 1px 1px rgba(255, 255, 255, 0.75);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset, 1px 1px 1px rgba(255, 255, 255, 0.75);
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset, 1px 1px 1px rgba(255, 255, 255, 0.75);
+    border-radius: 9px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px; }
+    .navbox .search-navbox input:focus {
+      outline: none;
+      box-shadow: 0 0 4px #0d76be inset;
+      -moz-box-shadow: 0 0 4px #0d76be inset;
+      -webkit-box-shadow: 0 0 4px #0d76be inset; }
+    .navbox .search-navbox input::-webkit-input-placeholder {
+      font-style: italic;
+      line-height: 15px; }
+    .navbox .search-navbox input:-moz-placeholder {
+      font-style: italic;
+      line-height: 15px; }
+  .navbox .search-navbox button {
+    background: #34adec;
+    background: -moz-linear-gradient(top, #34adec 0%, #2691dc 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #34adec), color-stop(100%, #2691dc));
+    background: -webkit-linear-gradient(top, #34adec 0%, #2691dc 100%);
+    background: -o-linear-gradient(top, #34adec 0%, #2691dc 100%);
+    background: -ms-linear-gradient(top, #34adec 0%, #2691dc 100%);
+    background: linear-gradient(to bottom, #34adec 0%, #2691dc 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34adec', endColorstr='#2691dc',GradientType=0 );
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font: 12px Georgia, "Times New Roman", Times, serif;
+    box-shadow: 0 0 2px #2692dd inset;
+    -moz-box-shadow: 0 0 2px #2692dd inset;
+    -webkit-box-shadow: 0 0 2px #2692dd inset;
+    border-radius: 9px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px; }
+    .navbox .search-navbox button:hover {
+      opacity: .9; }
 
 /*# sourceMappingURL=app.css.map*/

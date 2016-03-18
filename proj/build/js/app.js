@@ -50,9 +50,11 @@
 	'use strict';
 	
 	__webpack_require__(/*! ../sass/main.scss */ 1);
-	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 3);
+	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 2);
+	var NavBox = __webpack_require__(/*! ./nav/navbox.js */ 7);
 	
-	ReactDOM.render(React.createElement(CommentBox, null), document.getElementById('commentbox'));
+	ReactDOM.render(React.createElement(CommentBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('commentbox'));
+	ReactDOM.render(React.createElement(NavBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('navbox'));
 
 /***/ },
 /* 1 */
@@ -64,8 +66,7 @@
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 2 */,
-/* 3 */
+/* 2 */
 /*!*********************************************!*\
   !*** ./components/commentbox/CommentBox.js ***!
   \*********************************************/
@@ -73,8 +74,8 @@
 
 	'use strict';
 	
-	var CommentForm = __webpack_require__(/*! ./CommentForm.js */ 4);
-	var CommentList = __webpack_require__(/*! ./CommentList.js */ 5);
+	var CommentForm = __webpack_require__(/*! ./CommentForm.js */ 3);
+	var CommentList = __webpack_require__(/*! ./CommentList.js */ 4);
 	
 	var CommentBox = React.createClass({
 	  displayName: 'CommentBox',
@@ -82,7 +83,9 @@
 	  loadCommentsFromServer: function loadCommentsFromServer() {
 	    // $.ajax({
 	    //   url: this.props.url,
+	    //   type: "POST",
 	    //   dataType: 'json',
+	    //   data:{'test':'test'},
 	    //   cache: false,
 	    //   success: function(data) {
 	    //     this.setState({data: data});
@@ -112,11 +115,12 @@
 	    // });
 	  },
 	  getInitialState: function getInitialState() {
+	    this.loadCommentsFromServer();
 	    return { data: [] };
 	  },
 	  componentDidMount: function componentDidMount() {
-	    this.loadCommentsFromServer();
-	    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+	    // this.loadCommentsFromServer();
+	    // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -135,7 +139,7 @@
 	module.exports = CommentBox;
 
 /***/ },
-/* 4 */
+/* 3 */
 /*!**********************************************!*\
   !*** ./components/commentbox/CommentForm.js ***!
   \**********************************************/
@@ -190,7 +194,7 @@
 	module.exports = CommentForm;
 
 /***/ },
-/* 5 */
+/* 4 */
 /*!**********************************************!*\
   !*** ./components/commentbox/CommentList.js ***!
   \**********************************************/
@@ -198,7 +202,7 @@
 
 	"use strict";
 	
-	var Comment = __webpack_require__(/*! ./Comment.js */ 6);
+	var Comment = __webpack_require__(/*! ./Comment.js */ 5);
 	
 	var CommentList = React.createClass({
 	  displayName: "CommentList",
@@ -221,7 +225,7 @@
 	module.exports = CommentList;
 
 /***/ },
-/* 6 */
+/* 5 */
 /*!******************************************!*\
   !*** ./components/commentbox/Comment.js ***!
   \******************************************/
@@ -245,6 +249,110 @@
 	  }
 	});
 	module.exports = Comment;
+
+/***/ },
+/* 6 */,
+/* 7 */
+/*!**********************************!*\
+  !*** ./components/nav/navbox.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var NavButton = __webpack_require__(/*! ./navbutton.js */ 8);
+	var NavSearch = __webpack_require__(/*! ./navsearch.js */ 9);
+	
+	var NavBox = React.createClass({
+	  displayName: 'NavBox',
+	
+	  getInitialState: function getInitialState() {
+	    return { data: [] };
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'navbox' },
+	      React.createElement(
+	        'div',
+	        { className: 'brand-navbox' },
+	        'NAV BOX'
+	      ),
+	      React.createElement(NavButton, { className: 'menu-navbox', data: this.state.data }),
+	      React.createElement(NavSearch, { className: 'search-navbox', onCommentSubmit: this.handleCommentSubmit })
+	    );
+	  }
+	});
+	module.exports = NavBox;
+
+/***/ },
+/* 8 */
+/*!*************************************!*\
+  !*** ./components/nav/navbutton.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var NavButton = React.createClass({
+	  displayName: 'NavButton',
+	
+	  getInitialState: function getInitialState() {
+	    return { data: [{
+	        href: '#', text: 'list1'
+	      }, {
+	        href: '#', text: 'list2'
+	      }, {
+	        href: '#', text: 'list3'
+	      }] };
+	  },
+	  render: function render() {
+	    var liNodes = this.state.data.map(function (list) {
+	      return React.createElement(
+	        'li',
+	        null,
+	        React.createElement(
+	          'a',
+	          { href: list.href },
+	          list.text
+	        )
+	      );
+	    });
+	    return React.createElement(
+	      'ul',
+	      { className: 'menu-navbox' },
+	      liNodes
+	    );
+	  }
+	});
+	module.exports = NavButton;
+
+/***/ },
+/* 9 */
+/*!*************************************!*\
+  !*** ./components/nav/navsearch.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var NavSearch = React.createClass({
+	  displayName: "NavSearch",
+	
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "search-navbox" },
+	      React.createElement("input", { type: "text", className: "text-nav-search" }),
+	      React.createElement(
+	        "button",
+	        { className: "btn-nav-search" },
+	        "Search"
+	      )
+	    );
+	  }
+	});
+	module.exports = NavSearch;
 
 /***/ }
 /******/ ]);

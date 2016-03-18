@@ -1,0 +1,42 @@
+html,body,ul,li{
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	margin-left:auto;
+	margin-right:auto;
+}
+.row {
+	display: block;
+	padding: 5px 8px;
+}
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.text-left {
+	text-align: left;
+}
+.hidden {
+	visibility: hidden;
+}
+.show {
+	visibility: visible;
+}
+
+input[type='text']{
+	border: 1px solid #DADADA;
+	color: #888;
+	height: 30px;
+	outline: 0 none;
+	padding: 3px 3px 3px 5px;
+	width: 100%;
+	font-size: $g-font-size;
+	line-height:15px;
+	box-shadow: inset 0px 1px 4px #ECECEC;
+	-moz-box-shadow: inset 0px 1px 4px #ECECEC;
+	-webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
