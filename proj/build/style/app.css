@@ -66,13 +66,19 @@ input[type='submit'] {
 
 .navbox {
   color: #888;
-  background-color: #F7F7F7; }
+  background-color: #F7F7F7;
+  padding: 5px 20px 11px;
+  text-shadow: 1px 1px 1px #FFF;
+  border: 1px solid #E4E4E4;
+  display: inline-block; }
   .navbox .brand-navbox, .navbox .menu-navbox, .navbox .search-navbox {
-    display: inline-flex; }
+    float: left;
+    height: 30px; }
   .navbox .menu-navbox li {
-    display: inline-block;
+    float: left;
     list-style-type: none; }
   .navbox .search-navbox input {
+    width: 220px;
     background: #fefefe;
     border: none;
     font: 12px Georgia, "Times New Roman", Times, serif;
@@ -102,6 +108,8 @@ input[type='submit'] {
     background: -ms-linear-gradient(top, #34adec 0%, #2691dc 100%);
     background: linear-gradient(to bottom, #34adec 0%, #2691dc 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34adec', endColorstr='#2691dc',GradientType=0 );
+    padding: 10px 30px;
+    margin-left: 10px;
     border: none;
     color: #fff;
     cursor: pointer;
