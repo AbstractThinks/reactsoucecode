@@ -265,7 +265,7 @@
 
 	'use strict';
 	
-	var NavMenu = __webpack_require__(/*! ./navmenu.js */ 10);
+	var NavButton = __webpack_require__(/*! ./navbutton.js */ 8);
 	var NavSearch = __webpack_require__(/*! ./navsearch.js */ 9);
 	
 	var NavBox = React.createClass({
@@ -283,10 +283,12 @@
 	        { className: 'brand-navbox' },
 	        'NAV BOX'
 	      ),
-	      React.createElement(NavMenu, { className: 'menu-navbox', data: this.state.data }),
-	      React.createElement(NavSearch, { className: 'search-navbox', onCommentSubmit: this.handleCommentSubmit })
+	      React.createElement(NavButton, { className: 'menu-navbox', data: this.state.data }),
+	      React.createElement(NavSearch, { className: 'search-navbox', onCommentSubmit: this.handleCommentSubmit }),
+	      React.createElement('span', null)
 	    );
 	  }
+	
 	});
 	module.exports = NavBox;
 
@@ -302,29 +304,60 @@
 	var NavButton = React.createClass({
 	  displayName: 'NavButton',
 	
+	  getInitialState: function getInitialState() {
+	    return { data: [{
+	        id: "li1", href: '#', text: 'list1', children: [{ id: "li1li", href: '#', text: 'list1li' }]
+	      }, {
+	        id: "li2", href: '#', text: 'list2'
+	      }, {
+	        id: "li3", href: '#', text: 'list3'
+	      }] };
+	  },
 	  render: function render() {
-	    // var liNodes = this.props.data.map(function(list) {
-	    //    return (
-	    //      <li id={list.id}>
-	    //        <a href={list.href}>{list.text}</a>
-	    //      </li>
-	    //    );
-	    //  });
-	    // return (
-	    //   <ul className="menu-navbox">
-	    //     {liNodes}
-	    //   </ul>
-	    // );
-	    var ul = React.createElement('ul');
-	    for (var i = 0; i < this.props.data.length; i++) {
-	      var list = this.props.data[i];
-	      var dom = React.createElement('li', { href: list.href }, list.text);
-	      ul.appendChild(dom);
-	      for (var i = 0; i < defaultData.children.length; i++) {
-	        dom.appendChild(createDom(defaultData.children[i]));
+	    var liNodes = this.state.data.map(function (list) {
+	      if (list.children) {
+	        var children = list.children.map(function (listChildren) {
+	          return React.createElement(
+	            'li',
+	            { key: listChildren.id },
+	            React.createElement(
+	              'a',
+	              { href: listChildren.href },
+	              listChildren.text
+	            )
+	          );
+	        });
+	        return React.createElement(
+	          'li',
+	          { key: list.id },
+	          React.createElement(
+	            'a',
+	            { href: list.href },
+	            list.text
+	          ),
+	          React.createElement(
+	            'ul',
+	            null,
+	            children
+	          )
+	        );
+	      } else {
+	        return React.createElement(
+	          'li',
+	          { key: list.id },
+	          React.createElement(
+	            'a',
+	            { href: list.href },
+	            list.text
+	          )
+	        );
 	      }
-	    }
-	    return ul;
+	    });
+	    return React.createElement(
+	      'ul',
+	      { className: 'menu-navbox' },
+	      liNodes
+	    );
 	  }
 	});
 	module.exports = NavButton;
@@ -355,35 +388,6 @@
 	  }
 	});
 	module.exports = NavSearch;
-
-/***/ },
-/* 10 */
-/*!***********************************!*\
-  !*** ./components/nav/navmenu.js ***!
-  \***********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var NavButton = __webpack_require__(/*! ./navbutton.js */ 8);
-	
-	var NavMenu = React.createClass({
-	  displayName: 'NavMenu',
-	
-	  getInitialState: function getInitialState() {
-	    return { data: [{
-	        id: "li1", href: '#', text: 'list1', children: [{ d: "li1li1", href: '#', text: 'list1li1' }]
-	      }, {
-	        id: "li2", href: '#', text: 'list2'
-	      }, {
-	        id: "li3", href: '#', text: 'list3'
-	      }] };
-	  },
-	  render: function render() {
-	    return React.createElement(NavButton, { data: this.state.data });
-	  }
-	});
-	module.exports = NavMenu;
 
 /***/ }
 /******/ ]);

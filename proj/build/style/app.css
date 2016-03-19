@@ -1,4 +1,4 @@
-html, body, ul, li {
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);html, body, ul, li {
   margin: 0;
   padding: 0; }
 
@@ -46,6 +46,45 @@ input[type='text'], textarea {
   -moz-box-shadow: inset 0px 1px 4px #ECECEC;
   -webkit-box-shadow: inset 0px 1px 4px #ECECEC; }
 
+.btn {
+  background: #34adec;
+  background: -moz-linear-gradient(top, #34adec 0%, #2691dc 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #34adec), color-stop(100%, #2691dc));
+  background: -webkit-linear-gradient(top, #34adec 0%, #2691dc 100%);
+  background: -o-linear-gradient(top, #34adec 0%, #2691dc 100%);
+  background: -ms-linear-gradient(top, #34adec 0%, #2691dc 100%);
+  background: linear-gradient(to bottom, #34adec 0%, #2691dc 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34adec', endColorstr='#2691dc',GradientType=0 );
+  padding: 10px 30px;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+  font: 12px Georgia, "Times New Roman", Times, serif;
+  box-shadow: 0 0 2px #2692dd inset;
+  -moz-box-shadow: 0 0 2px #2692dd inset;
+  -webkit-box-shadow: 0 0 2px #2692dd inset;
+  border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px; }
+  .btn:hover {
+    opacity: .9; }
+
+.btn-primary {
+  color: #fff;
+  background: #333030; }
+
+.btn-default {
+  color: #fff;
+  background: #2b90d9; }
+
+.btn-warning {
+  color: #f15c5c;
+  background: #feee7d; }
+
+.btn-danger {
+  color: #f15c5c;
+  background: #ff7473; }
+
 .commentBox {
   background: #F7F7F7;
   font: 12px Georgia, "Times New Roman", Times, serif;
@@ -76,8 +115,13 @@ input[type='text'], textarea {
   background-color: #F7F7F7;
   padding: 5px 20px 11px;
   text-shadow: 1px 1px 1px #FFF;
-  border: 1px solid #E4E4E4;
-  display: inline-block; }
+  border: 1px solid #E4E4E4; }
+  .navbox:after {
+    display: block;
+    content: "clear";
+    height: 0;
+    clear: both;
+    visibility: hidden; }
   .navbox .brand-navbox, .navbox .menu-navbox, .navbox .search-navbox {
     float: left;
     height: 30px; }
