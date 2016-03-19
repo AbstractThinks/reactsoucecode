@@ -5,7 +5,9 @@ var CommentBox = React.createClass({
   loadCommentsFromServer: function() {
     // $.ajax({
     //   url: this.props.url,
+    //   type: "POST",
     //   dataType: 'json',
+    //   data:{'test':'test'},
     //   cache: false,
     //   success: function(data) {
     //     this.setState({data: data});
@@ -35,11 +37,12 @@ var CommentBox = React.createClass({
     // });
   },
   getInitialState: function() {
+    this.loadCommentsFromServer();
     return {data: []};
   },
   componentDidMount: function() {
-    this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    // this.loadCommentsFromServer();
+    // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   render: function() {
     return (

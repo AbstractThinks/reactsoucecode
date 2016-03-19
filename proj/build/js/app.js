@@ -51,8 +51,10 @@
 	
 	__webpack_require__(/*! ../sass/main.scss */ 1);
 	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 3);
+	var NavBox = __webpack_require__(/*! ./nav/navbox.js */ 7);
 	
-	ReactDOM.render(React.createElement(CommentBox, null), document.getElementById('commentbox'));
+	ReactDOM.render(React.createElement(CommentBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('commentbox'));
+	ReactDOM.render(React.createElement(NavBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('navbox'));
 
 /***/ },
 /* 1 */
@@ -82,7 +84,9 @@
 	  loadCommentsFromServer: function loadCommentsFromServer() {
 	    // $.ajax({
 	    //   url: this.props.url,
+	    //   type: "POST",
 	    //   dataType: 'json',
+	    //   data:{'test':'test'},
 	    //   cache: false,
 	    //   success: function(data) {
 	    //     this.setState({data: data});
@@ -112,11 +116,12 @@
 	    // });
 	  },
 	  getInitialState: function getInitialState() {
+	    this.loadCommentsFromServer();
 	    return { data: [] };
 	  },
 	  componentDidMount: function componentDidMount() {
-	    this.loadCommentsFromServer();
-	    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+	    // this.loadCommentsFromServer();
+	    // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -178,6 +183,11 @@
 	          value: this.state.text,
 	          onChange: this.handleTextChange
 	        })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'row text-center' },
+	        React.createElement('textarea', null)
 	      ),
 	      React.createElement(
 	        'div',
@@ -245,6 +255,135 @@
 	  }
 	});
 	module.exports = Comment;
+
+/***/ },
+/* 7 */
+/*!**********************************!*\
+  !*** ./components/nav/navbox.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var NavMenu = __webpack_require__(/*! ./navmenu.js */ 10);
+	var NavSearch = __webpack_require__(/*! ./navsearch.js */ 9);
+	
+	var NavBox = React.createClass({
+	  displayName: 'NavBox',
+	
+	  getInitialState: function getInitialState() {
+	    return { data: [] };
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'navbox' },
+	      React.createElement(
+	        'div',
+	        { className: 'brand-navbox' },
+	        'NAV BOX'
+	      ),
+	      React.createElement(NavMenu, { className: 'menu-navbox', data: this.state.data }),
+	      React.createElement(NavSearch, { className: 'search-navbox', onCommentSubmit: this.handleCommentSubmit })
+	    );
+	  }
+	});
+	module.exports = NavBox;
+
+/***/ },
+/* 8 */
+/*!*************************************!*\
+  !*** ./components/nav/navbutton.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var NavButton = React.createClass({
+	  displayName: 'NavButton',
+	
+	  render: function render() {
+	    // var liNodes = this.props.data.map(function(list) {
+	    //    return (
+	    //      <li id={list.id}>
+	    //        <a href={list.href}>{list.text}</a>
+	    //      </li>
+	    //    );
+	    //  });
+	    // return (
+	    //   <ul className="menu-navbox">
+	    //     {liNodes}
+	    //   </ul>
+	    // );
+	    var ul = React.createElement('ul');
+	    for (var i = 0; i < this.props.data.length; i++) {
+	      var list = this.props.data[i];
+	      var dom = React.createElement('li', { href: list.href }, list.text);
+	      ul.appendChild(dom);
+	      for (var i = 0; i < defaultData.children.length; i++) {
+	        dom.appendChild(createDom(defaultData.children[i]));
+	      }
+	    }
+	    return ul;
+	  }
+	});
+	module.exports = NavButton;
+
+/***/ },
+/* 9 */
+/*!*************************************!*\
+  !*** ./components/nav/navsearch.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var NavSearch = React.createClass({
+	  displayName: "NavSearch",
+	
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "search-navbox" },
+	      React.createElement("input", { type: "text", className: "text-nav-search" }),
+	      React.createElement(
+	        "button",
+	        { className: "btn-nav-search" },
+	        "Search"
+	      )
+	    );
+	  }
+	});
+	module.exports = NavSearch;
+
+/***/ },
+/* 10 */
+/*!***********************************!*\
+  !*** ./components/nav/navmenu.js ***!
+  \***********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var NavButton = __webpack_require__(/*! ./navbutton.js */ 8);
+	
+	var NavMenu = React.createClass({
+	  displayName: 'NavMenu',
+	
+	  getInitialState: function getInitialState() {
+	    return { data: [{
+	        id: "li1", href: '#', text: 'list1', children: [{ d: "li1li1", href: '#', text: 'list1li1' }]
+	      }, {
+	        id: "li2", href: '#', text: 'list2'
+	      }, {
+	        id: "li3", href: '#', text: 'list3'
+	      }] };
+	  },
+	  render: function render() {
+	    return React.createElement(NavButton, { data: this.state.data });
+	  }
+	});
+	module.exports = NavMenu;
 
 /***/ }
 /******/ ]);

@@ -28,6 +28,9 @@ var CommentForm = React.createClass({
         />
         </div>
         <div className="row text-center">
+          <textarea></textarea>
+        </div>
+        <div className="row text-center">
         <input type="submit" value="Post" />
         </div>
       </form>

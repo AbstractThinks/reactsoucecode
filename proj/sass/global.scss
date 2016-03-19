@@ -1,0 +1,79 @@
+html,body,ul,li{
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	margin-left:auto;
+	margin-right:auto;
+}
+.row {
+	widows: 100%;
+	display: block;
+	padding: 5px 8px;
+	overflow:hidden;
+	&:after { 
+		display:block; 
+		content:"clear";
+		height:0; 
+		clear:both;
+		visibility:hidden;
+	};
+}
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.text-left {
+	text-align: left;
+}
+.hidden {
+	visibility: hidden;
+}
+.show {
+	visibility: visible;
+}
+
+input[type='text'], textarea{
+	border: 1px solid #DADADA;
+	color: #888;
+	height: 30px;
+	outline: 0 none;
+	padding: 3px 3px 3px 5px;
+	width: 100%;
+	font-size: $g-font-size;
+	line-height:15px;
+	box-shadow: inset 0px 1px 4px #ECECEC;
+	-moz-box-shadow: inset 0px 1px 4px #ECECEC;
+	-webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+
+@media screen and (min-width: 319px) {
+
+}
+
+@media screen and (min-width: 359px) {
+
+}
+
+@media screen and (min-width: 383px) {
+
+}
+
+@media screen and (min-width: 399px) {
+
+}
+
+@media screen and (min-width: 639px) {
+
+}
+
+@media screen and (min-width: 767px) {
+
+}
+
+@media screen and (min-width: 1023px) {
+
+}

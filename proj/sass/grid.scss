@@ -1,0 +1,42 @@
+@media screen and (min-width: 319px) {
+	@for $i from 1 through 24 {
+	  .col-min-#{$i} {
+	    float: left; 
+	  	width: 100% / 24 * $i; 
+	  }
+	}
+}
+
+@media screen and (min-width: 359px) {
+
+}
+
+@media screen and (min-width: 383px) {
+
+}
+
+@media screen and (min-width: 399px) {
+
+}
+
+@media screen and (min-width: 639px) {
+	@for $i from 1 through 24 {
+	  .col-mid-#{$i} { 
+		float: left;
+	  	width: 100% / 24 * $i; 
+	  }
+	}
+}
+
+@media screen and (min-width: 767px) {
+	
+}
+
+@media screen and (min-width: 1023px) {
+	@for $i from 1 through 24 {
+	  .col-max-#{$i} { 
+	  	float: left;
+	  	width: 100% / 24 * $i; 
+	  }
+	}
+}
