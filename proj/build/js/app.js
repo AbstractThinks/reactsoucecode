@@ -306,7 +306,7 @@
 	
 	  getInitialState: function getInitialState() {
 	    return { data: [{
-	        id: "li1", href: '#', text: 'list1', children: [{ id: "li1li", href: '#', text: 'list1li' }]
+	        id: "li1", href: '#', text: 'list1', children: [{ id: "li1li", href: '#', text: 'list1li', children: [{ id: "li1lili", href: '#', text: 'list1lili' }] }]
 	      }, {
 	        id: "li2", href: '#', text: 'list2'
 	      }, {
@@ -314,45 +314,38 @@
 	      }] };
 	  },
 	  render: function render() {
-	    var liNodes = this.state.data.map(function (list) {
-	      if (list.children) {
-	        var children = list.children.map(function (listChildren) {
+	    function _traversal(data) {
+	      var nodes = data.map(function (list) {
+	        if (list.children) {
 	          return React.createElement(
 	            'li',
-	            { key: listChildren.id },
+	            { key: list.id },
 	            React.createElement(
 	              'a',
-	              { href: listChildren.href },
-	              listChildren.text
+	              { href: list.href },
+	              list.text
+	            ),
+	            React.createElement(
+	              'ul',
+	              null,
+	              _traversal(list.children)
 	            )
 	          );
-	        });
-	        return React.createElement(
-	          'li',
-	          { key: list.id },
-	          React.createElement(
-	            'a',
-	            { href: list.href },
-	            list.text
-	          ),
-	          React.createElement(
-	            'ul',
-	            null,
-	            children
-	          )
-	        );
-	      } else {
-	        return React.createElement(
-	          'li',
-	          { key: list.id },
-	          React.createElement(
-	            'a',
-	            { href: list.href },
-	            list.text
-	          )
-	        );
-	      }
-	    });
+	        } else {
+	          return React.createElement(
+	            'li',
+	            { key: list.id },
+	            React.createElement(
+	              'a',
+	              { href: list.href },
+	              list.text
+	            )
+	          );
+	        }
+	      });
+	      return nodes;
+	    }
+	    var liNodes = _traversal(this.state.data);
 	    return React.createElement(
 	      'ul',
 	      { className: 'menu-navbox' },
