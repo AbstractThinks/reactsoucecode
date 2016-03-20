@@ -367,6 +367,10 @@
 	var NavSearch = React.createClass({
 	  displayName: "NavSearch",
 	
+	  handleClick: function handleClick(e) {
+	    e.stopPropagation();
+	    alert(1);
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      "div",
@@ -374,7 +378,7 @@
 	      React.createElement("input", { type: "text", className: "text-nav-search" }),
 	      React.createElement(
 	        "button",
-	        { className: "btn-nav-search" },
+	        { className: "btn-nav-search", onClick: this.handleClick },
 	        "Search"
 	      )
 	    );
