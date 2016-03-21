@@ -298,11 +298,13 @@
 	var NavButton = React.createClass({
 	  displayName: 'NavButton',
 	
+	  handleMouseOver: function handleMouseOver() {},
+	  handleMouseOut: function handleMouseOut() {},
 	  getInitialState: function getInitialState() {
 	    return { data: [{
-	        id: "li1", href: '#', text: 'list1', children: [{ id: "li1li", href: '#', text: 'list1li', children: [{ id: "li1lili", href: '#', text: 'list1lili' }] }]
+	        id: "li1", href: '#', text: 'list1', children: [{ id: "li1li1", href: '#', text: 'list1li1' }, { id: "li1li12", href: '#', text: 'list1li12' }]
 	      }, {
-	        id: "li2", href: '#', text: 'list2'
+	        id: "li2", href: '#', text: 'list2', children: [{ id: "lili2", href: '#', text: 'list1li2' }]
 	      }, {
 	        id: "li3", href: '#', text: 'list3'
 	      }] };

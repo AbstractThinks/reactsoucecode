@@ -195,54 +195,53 @@ input, textarea {
 textarea {
   height: 80px; }
 
-.navbox {
-  padding: 0px 15px;
-  background-color: #003466;
-  z-index: 1000;
-  position: relative; }
-  .navbox ul {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    background-color: #003466; }
+@media screen and (min-width: 767px) {
+  #navbox {
+    position: fixed;
+    width: 100%; }
+  .navbox {
+    padding: 0px 15px;
+    background-color: #003466;
+    z-index: 1000;
+    position: relative;
+    border: 1px solid #27549C; }
     .navbox ul li {
-      margin: 0;
-      list-style-type: none; }
+      height: 60px;
+      line-height: 60px;
+      min-width: 80px;
+      list-style-type: none;
+      background-color: #003466; }
       .navbox ul li:hover {
-        background-color: #02284c; }
-    .navbox ul:after {
-      display: block;
-      content: "clear";
-      height: 0;
-      clear: both;
-      visibility: hidden; }
-  .navbox > ul > li {
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-    padding: 0px 20px;
+        background-color: #174e84; }
+      .navbox ul li a {
+        color: #fff; }
+  .menu-navbox {
     float: left; }
-    .navbox > ul > li li {
-      height: 50px;
-      line-height: 50px; }
-    .navbox > ul > li:hover {
-      display: block; }
-    .navbox > ul > li a {
-      color: #fff; }
-    .navbox > ul > li ul li {
-      padding-left: 20px;
-      text-align: left;
-      min-width: 160px; }
-  .navbox .search-navbox {
-    width: 45%;
+    .menu-navbox > li {
+      background-color: #003466;
+      float: left;
+      text-align: center; }
+      .menu-navbox > li li {
+        height: 50px;
+        line-height: 50px;
+        min-width: 120px;
+        padding-left: 20px;
+        text-align: left; }
+      .menu-navbox > li:hover ul {
+        display: block; }
+      .menu-navbox > li > ul {
+        position: absolute;
+        top: 100%;
+        display: none; }
+  .search-navbox {
+    float: right;
     height: 60px;
-    line-height: 60px;
-    float: right; }
-    .navbox .search-navbox input {
-      height: 22px;
-      width: 60%; }
-    .navbox .search-navbox .btn-nav-search {
-      margin-left: 10px; }
+    line-height: 60px; }
+    .search-navbox input {
+      width: 60%;
+      height: 22px; }
+    .search-navbox button {
+      margin-left: 10px; } }
 
 @media screen and (min-width: 319px) {
   .col-min-1 {
