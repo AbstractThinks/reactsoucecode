@@ -3,11 +3,17 @@
 <head>
 	<title></title>
 	<meta name=”viewport” content=”width=device-width, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0, user-scalable=no”>
-	<link rel="stylesheet" type="text/css" href="../build/style/app.css" />
+	<link rel="stylesheet" type="text/css" href="./build/style/app.css" />
 </head>
 <body>
-	<div>
-		<h1>grid</h1>
+	<div class="container">
+		<div class='row'>
+			<h1>reactUI&nbsp;&nbsp;&nbsp;h1</h1>
+			<h2>reactUI&nbsp;&nbsp;&nbsp;h2</h2>
+			<h3>reactUI&nbsp;&nbsp;&nbsp;h3</h3>
+			<h4>reactUI&nbsp;&nbsp;&nbsp;h4</h4>
+			<h5>reactUI&nbsp;&nbsp;&nbsp;h5</h5>
+		</div>
 		<div class='row'>
 			<div class="col-min-4 text-center" style="background-color: #d9d9d9;padding:10px 0px;">col-min-4</div>
 			<div class="col-min-6 text-center" style="background-color: #cfe2f3;padding:10px 0px;">col-min-6</div>
@@ -31,27 +37,36 @@
 			<div class="col-max-6 text-center" style="background-color: #a4c2f4;padding:10px 0px;">col-max-6</div>
 			<div class="col-max-2 text-center" style="background-color: #f4cccc;padding:10px 0px;">col-max-2</div>
 			<div class="col-max-2 text-center" style="background-color: #6d9eeb;padding:10px 0px;">col-max-2</div>
-		</div>
-	</div>
-	<div>
-		<h1>
-			button
-		</h1>
-		<div class='row' style="margin-top: 10px;">
-			<a href="#" class="btn btn-primary">primary</a>
-			<a href="#" class="btn btn-default">default</a>
-			<a href="#" class="btn btn-warning">warning</a>
-			<a href="#" class="btn btn-danger">danger</a>
-		</div>
-	</div>
+			</div>
+			<div class='row'>
+				<a href="#" class="btn btn-primary">primary</a>
+				<a href="#" class="btn btn-default">default</a>
+				<a href="#" class="btn btn-warning">warning</a>
+				<a href="#" class="btn btn-danger">danger</a>
+				<a href="#" class="btn btn-safe">safe</a>
+				<a href="#" class="btn btn-info">info</a>
+				<a href="#" class="btn btn-info btn-block">info</a>
+			</div>
 
-
-	<div id="commentbox" style="margin-top: 10px;"></div>
-	<div id="navbox" style="margin-top: 10px;"></div>
+			<div class='row'>
+				<form>
+					<input />
+					<input />
+					<input />
+					<input />
+					<input />
+					<input />
+					<textarea></textarea>
+				</form>
+			</div>
+			<div id="commentbox" style="margin-top: 10px;"></div>
+			<div id="navbox" style="margin-top: 10px;"></div>	
+	</div>
+	
 
 </body>
-	<script src='../lib/react.js'></script>
-	<script src='../lib/react-dom.js'></script>
-	<script type="text/javascript" src="../lib/jquery.js"></script>
-	<script src='../build/js/app.js'></script>
+	<script src='./lib/react.js'></script>
+	<script src='./lib/react-dom.js'></script>
+	<script type="text/javascript" src="./lib/jquery.js"></script>
+	<script src='./build/js/app.js'></script>
 </html>

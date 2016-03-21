@@ -1,16 +1,18 @@
 html,body,ul,li{
 	margin: 0;
 	padding: 0;
+	font-family: $font-Roboto;
 }
 
 .container {
 	margin-left:auto;
 	margin-right:auto;
+	padding: 0px 10px;
 }
 .row {
 	widows: 100%;
 	display: block;
-	padding: 5px 8px;
+	padding: 5px 10px;
 	overflow:hidden;
 	&:after { 
 		display:block; 
@@ -35,19 +37,13 @@ html,body,ul,li{
 .show {
 	visibility: visible;
 }
-
-input[type='text'], textarea{
-	border: 1px solid #DADADA;
-	color: #888;
-	height: 30px;
-	outline: 0 none;
-	padding: 3px 3px 3px 5px;
-	width: 100%;
-	font-size: $g-font-size;
-	line-height:15px;
-	box-shadow: inset 0px 1px 4px #ECECEC;
-	-moz-box-shadow: inset 0px 1px 4px #ECECEC;
-	-webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+@for $i from 1 through 6 {
+  h#{$i} {
+  	width: 36px - 4px * ($i - 1); 
+  }
+}
+a {
+	text-decoration: none;
 }
 
 @media screen and (min-width: 319px) {

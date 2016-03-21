@@ -1,41 +1,41 @@
 
+@mixin btn-box-shadow {
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+$btn-list:(default, $color-white, $color-dark, $color-white-border), (primary, $color-ocean, $color-white, $color-ocean-border), (warning, $color-yellow, $color-white, $color-yellow-border), (danger, $color-red, $color-white, $color-red-border), (safe, $color-green, $color-white, $color-green-border),(info, $color-info, $color-white, $color-info-border);
+$btn-list-hover:(default, $color-white-hover, $color-white-border-hover), (primary, $color-ocean-hover, $color-ocean-border-hover), (warning, $color-yellow-hover, $color-yellow-border-hover), (danger, $color-red-hover, $color-red-border-hover), (safe, $color-green-hover, $color-green-border-hover),(info, $color-info-hover, $color-white, $color-info-border-hover);
+
 .btn {
-  background: rgb(52,173,236);
-  background: -moz-linear-gradient(top, rgba(52,173,236,1) 0%, rgba(38,145,220,1) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(52,173,236,1)), color-stop(100%,rgba(38,145,220,1)));
-  background: -webkit-linear-gradient(top, rgba(52,173,236,1) 0%,rgba(38,145,220,1) 100%);
-  background: -o-linear-gradient(top, rgba(52,173,236,1) 0%,rgba(38,145,220,1) 100%);
-  background: -ms-linear-gradient(top, rgba(52,173,236,1) 0%,rgba(38,145,220,1) 100%);
-  background: linear-gradient(to bottom, rgba(52,173,236,1) 0%,rgba(38,145,220,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34adec', endColorstr='#2691dc',GradientType=0 );
-  padding: 10px 30px;
-  margin-left: 10px;
-  border: none;
-  cursor: pointer;
-  font: $g-font;
-  box-shadow: 0 0 2px #2692dd inset;
-  -moz-box-shadow: 0 0 2px #2692dd inset;
-  -webkit-box-shadow: 0 0 2px #2692dd inset;
-  border-radius: 9px;
-  -moz-border-radius: 9px;
-  -webkit-border-radius: 9px;
-  &:hover {
-  opacity:.9;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 6px 12px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 4px;  
+}
+.btn-block {
+  display: block;
+}
+
+@each $name, $back-color, $color, $border-color in $btn-list {
+  .btn-#{$name} {
+    color: #{$color};
+    border: 1px solid #{$border-color};
+    background-color: #{$back-color};
   }
 }
-.btn-primary {
-  color: #fff;
-  background:$color-dark;
-}
-.btn-default {
-  color: #fff;
-  background: $color-ocean;
-}
-.btn-warning {
-  color:#f15c5c;
-  background:$color-sun;
-}
-.btn-danger {
-  color:#f15c5c;
-  background:$color-salmon;
+
+@each $name, $back-color, $border-color in $btn-list-hover {
+  .btn-#{$name}{
+    &:hover{
+      border: 1px solid #{$border-color};
+      background-color: #{$back-color};
+    };
+    &:active{
+      border: 1px solid #{$border-color};
+      background-color: #{$back-color};
+      @include btn-box-shadow;
+    }
+    
+  }
 }

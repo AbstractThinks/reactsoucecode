@@ -50,8 +50,8 @@
 	'use strict';
 	
 	__webpack_require__(/*! ../sass/main.scss */ 1);
-	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 3);
-	var NavBox = __webpack_require__(/*! ./nav/navbox.js */ 7);
+	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 2);
+	var NavBox = __webpack_require__(/*! ./nav/navbox.js */ 6);
 	
 	ReactDOM.render(React.createElement(CommentBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('commentbox'));
 	ReactDOM.render(React.createElement(NavBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('navbox'));
@@ -66,8 +66,7 @@
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 2 */,
-/* 3 */
+/* 2 */
 /*!*********************************************!*\
   !*** ./components/commentbox/CommentBox.js ***!
   \*********************************************/
@@ -75,8 +74,8 @@
 
 	'use strict';
 	
-	var CommentForm = __webpack_require__(/*! ./CommentForm.js */ 4);
-	var CommentList = __webpack_require__(/*! ./CommentList.js */ 5);
+	var CommentForm = __webpack_require__(/*! ./CommentForm.js */ 3);
+	var CommentList = __webpack_require__(/*! ./CommentList.js */ 4);
 	
 	var CommentBox = React.createClass({
 	  displayName: 'CommentBox',
@@ -140,7 +139,7 @@
 	module.exports = CommentBox;
 
 /***/ },
-/* 4 */
+/* 3 */
 /*!**********************************************!*\
   !*** ./components/commentbox/CommentForm.js ***!
   \**********************************************/
@@ -200,7 +199,7 @@
 	module.exports = CommentForm;
 
 /***/ },
-/* 5 */
+/* 4 */
 /*!**********************************************!*\
   !*** ./components/commentbox/CommentList.js ***!
   \**********************************************/
@@ -208,7 +207,7 @@
 
 	"use strict";
 	
-	var Comment = __webpack_require__(/*! ./Comment.js */ 6);
+	var Comment = __webpack_require__(/*! ./Comment.js */ 5);
 	
 	var CommentList = React.createClass({
 	  displayName: "CommentList",
@@ -231,7 +230,7 @@
 	module.exports = CommentList;
 
 /***/ },
-/* 6 */
+/* 5 */
 /*!******************************************!*\
   !*** ./components/commentbox/Comment.js ***!
   \******************************************/
@@ -257,7 +256,7 @@
 	module.exports = Comment;
 
 /***/ },
-/* 7 */
+/* 6 */
 /*!**********************************!*\
   !*** ./components/nav/navbox.js ***!
   \**********************************/
@@ -265,8 +264,8 @@
 
 	'use strict';
 	
-	var NavButton = __webpack_require__(/*! ./navbutton.js */ 8);
-	var NavSearch = __webpack_require__(/*! ./navsearch.js */ 9);
+	var NavButton = __webpack_require__(/*! ./navbutton.js */ 7);
+	var NavSearch = __webpack_require__(/*! ./navsearch.js */ 8);
 	
 	var NavBox = React.createClass({
 	  displayName: 'NavBox',
@@ -293,7 +292,7 @@
 	module.exports = NavBox;
 
 /***/ },
-/* 8 */
+/* 7 */
 /*!*************************************!*\
   !*** ./components/nav/navbutton.js ***!
   \*************************************/
@@ -356,7 +355,7 @@
 	module.exports = NavButton;
 
 /***/ },
-/* 9 */
+/* 8 */
 /*!*************************************!*\
   !*** ./components/nav/navsearch.js ***!
   \*************************************/
