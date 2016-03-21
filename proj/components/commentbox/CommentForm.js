@@ -31,7 +31,7 @@ var CommentForm = React.createClass({
           <textarea></textarea>
         </div>
         <div className="row text-center">
-        <input type="submit" value="Post" />
+          <input type="submit" className="btn btn-primary" value="Post" />
         </div>
       </form>
     );

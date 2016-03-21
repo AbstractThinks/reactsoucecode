@@ -191,7 +191,7 @@
 	      React.createElement(
 	        'div',
 	        { className: 'row text-center' },
-	        React.createElement('input', { type: 'submit', value: 'Post' })
+	        React.createElement('input', { type: 'submit', className: 'btn btn-primary', value: 'Post' })
 	      )
 	    );
 	  }
@@ -276,15 +276,9 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      { className: 'navbox' },
-	      React.createElement(
-	        'div',
-	        { className: 'brand-navbox' },
-	        'NAV BOX'
-	      ),
+	      { className: 'navbox clear-float' },
 	      React.createElement(NavButton, { className: 'menu-navbox', data: this.state.data }),
-	      React.createElement(NavSearch, { className: 'search-navbox', onCommentSubmit: this.handleCommentSubmit }),
-	      React.createElement('span', null)
+	      React.createElement(NavSearch, { className: 'search-navbox', onCommentSubmit: this.handleCommentSubmit })
 	    );
 	  }
 	
@@ -372,7 +366,7 @@
 	  },
 	  render: function render() {
 	    return React.createElement(
-	      "div",
+	      "span",
 	      { className: "search-navbox" },
 	      React.createElement("input", { type: "text", className: "text-nav-search" }),
 	      React.createElement(

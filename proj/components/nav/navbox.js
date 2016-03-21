@@ -7,11 +7,9 @@ var NavBox = React.createClass({
   },
   render: function() {
     return (
-      <div className="navbox">
-        <div className="brand-navbox">NAV BOX</div>
+      <div className="navbox clear-float">
         <NavButton className="menu-navbox" data={this.state.data} />
         <NavSearch className="search-navbox" onCommentSubmit={this.handleCommentSubmit} />
-        <span></span>
       </div>
     );
   }

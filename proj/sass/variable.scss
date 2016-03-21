@@ -7,7 +7,10 @@ $g-background-color:#F7F7F7;
 $font-Roboto: 'Roboto', sans-serif;
 
 
-
+/**
+ * [btn color description]
+ * @type {[type]}
+ */
 $color-white: #fff;
 $color-white-border: #ccc;
 $color-white-hover: #e6e6e6;
@@ -43,15 +46,9 @@ $color-info-border-hover: #269abc;
 $color-dark:  #333030;
 $color-dark-hover:  #333030;
 
+/**
+ * form color
+ */
 
-
-
-
-
-
-
-
-
-
-$commentbox-width:80%;
+$input-border-color: #ccc;
 

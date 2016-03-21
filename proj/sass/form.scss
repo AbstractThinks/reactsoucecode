@@ -1,4 +1,25 @@
+form {
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid $input-border-color;
+	background-color: rgba(204, 204, 204, 0.23);
+}
 
+input,textarea {
+  border-radius: 4px;
+  background:white;
+  border: 1px solid $input-border-color;
+  display: inline-block;
+  height: 30px;
+  font-size: 18px;
+  margin: 0;
+  width:95%;
+  padding:2px 5px;
+}
+
+textarea {
+	height: 80px;
+}
 
 
 
