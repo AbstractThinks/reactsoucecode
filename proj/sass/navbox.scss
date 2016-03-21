@@ -1,1 +1,50 @@
-
+.navbox {
+	padding: 0px 15px;
+	background-color: $navbox-color;
+	ul {
+		li {
+			height: 40px;
+			line-height: 40px;
+			a{
+				color: $color-white;
+			}
+			float: left;
+			list-style-type:none;
+			ul{
+				height:0;
+				display: none;
+			}
+			&:hover{
+				background-color: #3b73af;
+			}
+		}
+		&:after {
+			display:block; 
+			content:"clear";
+			height:0; 
+			clear:both;
+			visibility:hidden;
+		}
+	};
+	ul>li{
+		width: 60px;
+		height: 40px;
+		text-align: center;
+	};
+	&>ul{
+		float: left;
+	}
+	.search-navbox {
+		width: 45%;
+		height: 40px;
+		line-height: 40px;
+		float:right;
+		input {
+			height: 22px;
+			width: 60%;
+		};
+		.btn-nav-search {
+			margin-left: 10px;
+		};
+	};
+}

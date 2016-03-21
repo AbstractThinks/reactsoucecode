@@ -6,8 +6,8 @@
  * form color
  */
 /**
- * navbox color
- * 
+ * [color description]
+ * @type {[type]}
  */
 html, body, ul, li {
   margin: 0;
@@ -196,19 +196,42 @@ textarea {
   height: 80px; }
 
 .navbox {
-  background-color: rgba(204, 204, 204, 0.23); }
+  padding: 0px 15px;
+  background-color: #003466; }
   .navbox ul li {
+    height: 40px;
+    line-height: 40px;
     float: left;
     list-style-type: none; }
+    .navbox ul li a {
+      color: #fff; }
     .navbox ul li ul {
       height: 0;
       display: none; }
+    .navbox ul li:hover {
+      background-color: #3b73af; }
   .navbox ul:after {
     display: block;
     content: "clear";
     height: 0;
     clear: both;
     visibility: hidden; }
+  .navbox ul > li {
+    width: 60px;
+    height: 40px;
+    text-align: center; }
+  .navbox > ul {
+    float: left; }
+  .navbox .search-navbox {
+    width: 45%;
+    height: 40px;
+    line-height: 40px;
+    float: right; }
+    .navbox .search-navbox input {
+      height: 22px;
+      width: 60%; }
+    .navbox .search-navbox .btn-nav-search {
+      margin-left: 10px; }
 
 @media screen and (min-width: 319px) {
   .col-min-1 {

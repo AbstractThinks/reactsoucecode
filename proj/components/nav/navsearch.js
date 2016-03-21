@@ -7,7 +7,7 @@ var NavSearch = React.createClass({
     return (
  		<div className="search-navbox">
  			<input type='text' className="text-nav-search"/>
- 			<button className="btn-nav-search" onClick={this.handleClick}>Search</button>
+ 			<button className="btn-nav-search btn btn-primary" onClick={this.handleClick}>Search</button>
  		</div>           
     );
   }
