@@ -197,35 +197,46 @@ textarea {
 
 .navbox {
   padding: 0px 15px;
-  background-color: #003466; }
-  .navbox ul li {
-    height: 40px;
-    line-height: 40px;
-    float: left;
-    list-style-type: none; }
-    .navbox ul li a {
-      color: #fff; }
-    .navbox ul li ul {
+  background-color: #003466;
+  z-index: 1000;
+  position: relative; }
+  .navbox ul {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    background-color: #003466; }
+    .navbox ul li {
+      margin: 0;
+      list-style-type: none; }
+      .navbox ul li:hover {
+        background-color: #02284c; }
+    .navbox ul:after {
+      display: block;
+      content: "clear";
       height: 0;
-      display: none; }
-    .navbox ul li:hover {
-      background-color: #3b73af; }
-  .navbox ul:after {
-    display: block;
-    content: "clear";
-    height: 0;
-    clear: both;
-    visibility: hidden; }
-  .navbox ul > li {
-    width: 60px;
-    height: 40px;
-    text-align: center; }
-  .navbox > ul {
+      clear: both;
+      visibility: hidden; }
+  .navbox > ul > li {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    padding: 0px 20px;
     float: left; }
+    .navbox > ul > li li {
+      height: 50px;
+      line-height: 50px; }
+    .navbox > ul > li:hover {
+      display: block; }
+    .navbox > ul > li a {
+      color: #fff; }
+    .navbox > ul > li ul li {
+      padding-left: 20px;
+      text-align: left;
+      min-width: 160px; }
   .navbox .search-navbox {
     width: 45%;
-    height: 40px;
-    line-height: 40px;
+    height: 60px;
+    line-height: 60px;
     float: right; }
     .navbox .search-navbox input {
       height: 22px;

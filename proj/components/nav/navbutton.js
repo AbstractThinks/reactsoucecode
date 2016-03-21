@@ -1,9 +1,9 @@
 var NavButton = React.createClass({
   getInitialState: function() {
     return {data: [{
-    		id:"li1",href : '#',text :'list1', children:[{id:"li1li",href : '#',text :'list1li',children:[{id:"li1lili",href : '#',text :'list1lili'}]}]
+    		id:"li1",href : '#',text :'list1', children:[{id:"li1li",href : '#',text :'list1li'},{id:"li1li",href : '#',text :'list1li'}]
     	},{
-    		id:"li2",href : '#',text :'list2'
+    		id:"li2",href : '#',text :'list2',children:[{id:"li1lili",href : '#',text :'list1lili'}]
     	},{
     		id:"li3",href : '#',text :'list3'
     	}]};
