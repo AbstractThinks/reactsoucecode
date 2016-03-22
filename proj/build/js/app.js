@@ -271,6 +271,17 @@
 	var NavBox = React.createClass({
 	  displayName: 'NavBox',
 	
+	  handleClick: function handleClick(e) {
+	    var $this = $(e.target);
+	    if (!$this.hasClass('menu-icon')) {
+	      $this = $this.parent();
+	    }
+	    if ($this.hasClass("active")) {
+	      $this.removeClass("active");
+	    } else {
+	      $this.addClass("active");
+	    }
+	  },
 	  getInitialState: function getInitialState() {
 	    return { data: [] };
 	  },
@@ -278,6 +289,13 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'navbox clear-float' },
+	      React.createElement(
+	        'div',
+	        { id: 'menu-icon', className: 'menu-icon', onClick: this.handleClick },
+	        React.createElement('span', { className: 'first' }),
+	        React.createElement('span', { className: 'second' }),
+	        React.createElement('span', { className: 'third' })
+	      ),
 	      React.createElement(NavButton, { className: 'menu-navbox', data: this.state.data }),
 	      React.createElement(NavSearch, { className: 'search-navbox', onCommentSubmit: this.handleCommentSubmit })
 	    );
@@ -298,6 +316,11 @@
 	var NavButton = React.createClass({
 	  displayName: 'NavButton',
 	
+	  handleClick: function handleClick() {
+	    if ($('#menu-icon.active').length > 0) {
+	      $('#menu-icon.active').removeClass('active');
+	    }
+	  },
 	  handleMouseOver: function handleMouseOver() {},
 	  handleMouseOut: function handleMouseOut() {},
 	  getInitialState: function getInitialState() {
@@ -310,7 +333,7 @@
 	      }] };
 	  },
 	  render: function render() {
-	    function _traversal(data) {
+	    function _traversal(data, callback) {
 	      var nodes = data.map(function (list) {
 	        if (list.children) {
 	          return React.createElement(
@@ -318,13 +341,13 @@
 	            { key: list.id },
 	            React.createElement(
 	              'a',
-	              { href: list.href },
+	              { href: list.href, onClick: callback },
 	              list.text
 	            ),
 	            React.createElement(
 	              'ul',
 	              null,
-	              _traversal(list.children)
+	              _traversal(list.children, callback)
 	            )
 	          );
 	        } else {
@@ -333,7 +356,7 @@
 	            { key: list.id },
 	            React.createElement(
 	              'a',
-	              { href: list.href },
+	              { href: list.href, onClick: callback },
 	              list.text
 	            )
 	          );
@@ -341,7 +364,7 @@
 	      });
 	      return nodes;
 	    }
-	    var liNodes = _traversal(this.state.data);
+	    var liNodes = _traversal(this.state.data, this.handleClick);
 	    return React.createElement(
 	      'ul',
 	      { className: 'menu-navbox' },
@@ -374,8 +397,8 @@
 	      React.createElement("input", { type: "text", className: "text-nav-search" }),
 	      React.createElement(
 	        "button",
-	        { className: "btn-nav-search btn btn-primary", onClick: this.handleClick },
-	        "Search"
+	        { className: "btn-nav-search btn btn-primary btn-search", onClick: this.handleClick },
+	        React.createElement("i", { className: "icon-search" })
 	      )
 	    );
 	  }
