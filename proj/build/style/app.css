@@ -25,6 +25,7 @@ a {
 .container {
   margin-left: auto;
   margin-right: auto;
+  min-width: 320px;
   padding: 0px 10px; }
 
 .clear-float:after {
@@ -174,6 +175,29 @@ h6 {
   border: 1px solid #fff;
   background-color: #31b0d5;
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
+
+.search-input {
+  display: inline-block;
+  position: relative; }
+  .search-input input {
+    width: auto;
+    border-radius: 25px;
+    padding-left: 25px;
+    padding-right: 40px; }
+    .search-input input:focus {
+      border: 1px solid #85b7d9;
+      outline: 0px; }
+  .search-input i {
+    position: absolute;
+    display: inline-block;
+    line-height: 34px;
+    text-align: center;
+    height: 34px;
+    width: 25px;
+    right: 14px;
+    top: 1px;
+    color: burlywood;
+    font-size: 20px; }
 
 form {
   padding: 10px;

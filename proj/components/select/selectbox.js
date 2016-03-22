@@ -1,7 +1,6 @@
 var NavSearch = React.createClass({
   handleClick: function (e) {
-  	e.stopPropagation();
-  	alert(1);
+  	
   },
   render: function() {
     return (

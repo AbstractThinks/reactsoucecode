@@ -128,8 +128,7 @@
 
 
 
-@media screen and (min-width: 767px) {
-	
+@media screen and (min-width: 767px) {	
 	#navbox {
 		padding: 0px 15px;
 		background-color: $navbox-color;
@@ -157,7 +156,7 @@
 				}
 			}
 		};
-	}
+	};
 	.menu-navbox {
 		float:left;
 		&>li {
