@@ -1,0 +1,12 @@
+.check-box {
+	padding-left: 20px;
+	display : inline-block;
+	position : relative;
+	input[type="checkbox"] {
+		position: absolute;
+		left: 2px;
+    	top: 5px;
+		width:17px;
+		height:17px;
+	}
+}

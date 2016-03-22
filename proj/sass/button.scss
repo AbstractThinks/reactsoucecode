@@ -40,3 +40,33 @@ $btn-list-hover:(default, $color-white-hover, $color-white-border-hover), (prima
     
   }
 }
+.btn-menu-icon {
+  display:inline-block;
+  cursor:pointer;
+  background-color: $color-blue;
+  padding-top:7px;
+  height:30px;
+  width:40px;
+  span {
+    border:2px solid #fff;
+    margin-bottom:5px;
+    display:block;
+    -webkit-transition:all .2s;
+    transition:all .1s;
+  };
+}
+.btn-menu-icon.active{
+  .first {
+    transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+    margin-top:10px
+  };
+  .second {
+    transform:rotate(135deg);
+    -webkit-transform:rotate(135deg);
+    position:relative;top:-9px;
+  };
+  .third {
+    display:none
+  }
+}

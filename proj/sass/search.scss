@@ -2,12 +2,12 @@
 	display: inline-block;
 	position: relative;
 	input {
-		width:auto;
+		width:140px;
 		border-radius: 25px;
 		padding-left: 25px;
 		padding-right: 40px;
 		&:focus {
-	    	border: 1px solid $search-focus-border;
+	    	border: 1px solid $focus-border;
 			outline: 0px;
 	    };
 	};

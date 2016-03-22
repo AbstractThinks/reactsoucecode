@@ -1,0 +1,49 @@
+.radio-box {
+	position : relative;
+	display : inline-block;
+	padding-left: 20px;
+	input[type="radio"]{
+		z-index: 100;
+		position: absolute;
+		width: 17px;
+		height: 17px;
+		left: 5px;
+    	top: 5px;
+    	opacity: 0;
+    	background-color:$g-transparent;
+    	&:focus {
+    		outline:0px;
+    	};
+    	&:checked+.outer {
+    		border: 3px solid #F08B3B;
+    		.inner {
+				opacity: 1;
+    		}
+    	};
+	};
+	.outer {
+		z-index: 98;
+		position: absolute;
+		height: 16px;
+		width: 16px;
+		left: 2px;
+		top: 2px;
+		display: block;
+		border: 3px solid #0C70B4;
+		border-radius: 50%;
+		background-color: #FFF;
+	}
+	.inner {
+		z-index: 99;
+		position: absolute;
+		top:2px;
+		left: 2px;
+		height: 12px;
+		width: 12px;
+		display: block;
+		border-radius: 50%;
+		background-color: #F08B3B;
+		opacity: 0;
+		transition: all 0.25s ease-in-out 0s;
+	}
+}

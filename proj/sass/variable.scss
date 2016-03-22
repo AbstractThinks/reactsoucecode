@@ -1,9 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
+// @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
 
 $g-font-size:12px;
 $g-font:12px Georgia, "Times New Roman", Times, serif;
 $g-color:#888;
-$g-background-color:#F7F7F7; 
+$g-background-color:#F7F7F7;
+$g-transparent: rgba(0, 0, 0, 0);
 $font-Roboto: 'Roboto', sans-serif;
 
 
@@ -45,13 +46,14 @@ $color-info-border-hover: #269abc;
 
 $color-dark:  #333030;
 $color-dark-hover:  #333030;
+$color-blue: #00446b;
 
 /**
  * form color
  */
 
 $input-border-color: #ccc;
-$search-focus-border: #85b7d9;
+$focus-border: #85b7d9;
 /**
  * [color description]
  * @type {[type]}

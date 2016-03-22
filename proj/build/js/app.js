@@ -50,9 +50,11 @@
 	'use strict';
 	
 	__webpack_require__(/*! ../sass/main.scss */ 1);
-	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 3);
-	var NavBox = __webpack_require__(/*! ./nav/navbox.js */ 7);
+	var SearchBox = __webpack_require__(/*! ./component/searchbox.js */ 3);
+	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 4);
+	var NavBox = __webpack_require__(/*! ./nav/navbox.js */ 8);
 	
+	ReactDOM.render(React.createElement(SearchBox, null), document.getElementById('searchbox'));
 	ReactDOM.render(React.createElement(CommentBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('commentbox'));
 	ReactDOM.render(React.createElement(NavBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('navbox'));
 
@@ -68,6 +70,33 @@
 /***/ },
 /* 2 */,
 /* 3 */
+/*!*******************************************!*\
+  !*** ./components/component/searchbox.js ***!
+  \*******************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var SearchBox = React.createClass({
+	  displayName: "SearchBox",
+	
+	  handleClick: function handleClick(e) {
+	    e.stopPropagation();
+	    alert(1);
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "search-input" },
+	      React.createElement("input", { type: "text", placeholder: "search..." }),
+	      React.createElement("i", { className: "icon-search" })
+	    );
+	  }
+	});
+	module.exports = SearchBox;
+
+/***/ },
+/* 4 */
 /*!*********************************************!*\
   !*** ./components/commentbox/CommentBox.js ***!
   \*********************************************/
@@ -75,8 +104,8 @@
 
 	'use strict';
 	
-	var CommentForm = __webpack_require__(/*! ./CommentForm.js */ 4);
-	var CommentList = __webpack_require__(/*! ./CommentList.js */ 5);
+	var CommentForm = __webpack_require__(/*! ./CommentForm.js */ 5);
+	var CommentList = __webpack_require__(/*! ./CommentList.js */ 6);
 	
 	var CommentBox = React.createClass({
 	  displayName: 'CommentBox',
@@ -140,7 +169,7 @@
 	module.exports = CommentBox;
 
 /***/ },
-/* 4 */
+/* 5 */
 /*!**********************************************!*\
   !*** ./components/commentbox/CommentForm.js ***!
   \**********************************************/
@@ -200,7 +229,7 @@
 	module.exports = CommentForm;
 
 /***/ },
-/* 5 */
+/* 6 */
 /*!**********************************************!*\
   !*** ./components/commentbox/CommentList.js ***!
   \**********************************************/
@@ -208,7 +237,7 @@
 
 	"use strict";
 	
-	var Comment = __webpack_require__(/*! ./Comment.js */ 6);
+	var Comment = __webpack_require__(/*! ./Comment.js */ 7);
 	
 	var CommentList = React.createClass({
 	  displayName: "CommentList",
@@ -231,7 +260,7 @@
 	module.exports = CommentList;
 
 /***/ },
-/* 6 */
+/* 7 */
 /*!******************************************!*\
   !*** ./components/commentbox/Comment.js ***!
   \******************************************/
@@ -257,7 +286,7 @@
 	module.exports = Comment;
 
 /***/ },
-/* 7 */
+/* 8 */
 /*!**********************************!*\
   !*** ./components/nav/navbox.js ***!
   \**********************************/
@@ -265,8 +294,8 @@
 
 	'use strict';
 	
-	var NavButton = __webpack_require__(/*! ./navbutton.js */ 8);
-	var NavSearch = __webpack_require__(/*! ./navsearch.js */ 9);
+	var NavButton = __webpack_require__(/*! ./navbutton.js */ 9);
+	var NavSearch = __webpack_require__(/*! ./navsearch.js */ 10);
 	
 	var NavBox = React.createClass({
 	  displayName: 'NavBox',
@@ -305,7 +334,7 @@
 	module.exports = NavBox;
 
 /***/ },
-/* 8 */
+/* 9 */
 /*!*************************************!*\
   !*** ./components/nav/navbutton.js ***!
   \*************************************/
@@ -375,7 +404,7 @@
 	module.exports = NavButton;
 
 /***/ },
-/* 9 */
+/* 10 */
 /*!*************************************!*\
   !*** ./components/nav/navsearch.js ***!
   \*************************************/
