@@ -1,4 +1,5 @@
-[type="checkbox"]{
+.check-box{
+  [type="checkbox"]{
     position: absolute;
     left: -9999px;
     &+label {
@@ -14,21 +15,22 @@
         content: '';
         position: absolute;
         left:0; 
-        top: 2px;
+        top: 3px;
         width: 17px; 
         height: 17px;
         border: 1px solid #aaa;
         background: #f8f8f8;
-        border-radius: 3px;
         box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
       };
       &:after {
         content: '\2714';
         position: absolute;
-        top: 3px; left: 4px;
-        font-size: 18px;
+        top: 4px; 
+        left: 1px;
+        font-size: 22px;
         line-height: 0.8;
-        color: #09ad7e;
+        color: white;
+        background-color: #09ad7e;
         transition: all .2s;
       }
 
@@ -42,6 +44,10 @@
     &:checked + label {
       opacity: 1;
       transform: scale(1);
+      &:before {
+        border:0px;
+      }
+
     };
     &:disabled + label {
       color: #aaa;
@@ -51,5 +57,8 @@
         background-color: #ddd;
       };
     }
+  }
 }
+
+
 

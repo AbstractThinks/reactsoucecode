@@ -49,19 +49,29 @@
 
 	'use strict';
 	
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../sass/main.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(/*! ../sass/main.scss */ 1);
 	var SearchBox = __webpack_require__(/*! ./component/searchbox.js */ 3);
-	var RadioBox = __webpack_require__(/*! ./component/radiobox.js */ 11);
-	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 4);
-	var NavBox = __webpack_require__(/*! ./nav/navbox.js */ 8);
+	var RadioBox = __webpack_require__(/*! ./component/radiobox.js */ 4);
+	var CheckBox = __webpack_require__(/*! ./component/checkbox.js */ 5);
+	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 6);
+	var NavBox = __webpack_require__(/*! ./nav/navbox.js */ 10);
 	
 	ReactDOM.render(React.createElement(SearchBox, null), document.getElementById('searchbox'));
 	ReactDOM.render(React.createElement(RadioBox, null), document.getElementById('radiobox'));
+	ReactDOM.render(React.createElement(CheckBox, null), document.getElementById('checkBox'));
 	ReactDOM.render(React.createElement(CommentBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('commentbox'));
 	ReactDOM.render(React.createElement(NavBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('navbox'));
 
 /***/ },
-/* 1 */,
+/* 1 */
+/*!************************!*\
+  !*** ./sass/main.scss ***!
+  \************************/
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
 /* 2 */,
 /* 3 */
 /*!*******************************************!*\
@@ -91,6 +101,136 @@
 
 /***/ },
 /* 4 */
+/*!******************************************!*\
+  !*** ./components/component/radiobox.js ***!
+  \******************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var RadioBox = React.createClass({
+	  displayName: "RadioBox",
+	
+	  handleClick: function handleClick(e) {
+	    e.stopPropagation();
+	    // e.preventDefault();
+	    alert("handleClick");
+	  },
+	  handleChange: function handleChange(e) {
+	    alert("handleChange");
+	  },
+	  getInitialState: function getInitialState() {
+	    return { data: [{
+	        key: "radio1", id: "radio1", name: 'radio', text: 'list1', value: "list1", checked: "checked"
+	      }, {
+	        key: "radio2", id: "radio2", name: 'radio', text: 'list2', value: "list2"
+	      }, {
+	        key: "radio3", id: "radio3", name: 'radio', text: 'list3', value: "list3"
+	      }, {
+	        key: "radio4", id: "radio4", name: 'radio', text: 'list4', value: "list4", disabled: "disabled"
+	      }, {
+	        key: "radio5", id: "radio5", name: 'radio', text: 'list5', value: "list5", disabled: "disabled", checked: "checked"
+	      }] };
+	  },
+	  render: function render() {
+	    var handleClick = this.handleClick;
+	    var handlechange = this.handleChange;
+	    var nodes = this.state.data.map(function (list) {
+	      return React.createElement(
+	        "div",
+	        { className: "radio-box", key: list.key, onClick: handleClick },
+	        React.createElement("input", { type: "radio", id: list.id, name: list.name, value: list.value, defaultChecked: list.checked, disabled: list.disabled, onChange: handlechange }),
+	        React.createElement(
+	          "label",
+	          { htmlFor: list.id },
+	          list.text
+	        )
+	      );
+	    });
+	    return React.createElement(
+	      "div",
+	      null,
+	      nodes
+	    );
+	  }
+	});
+	module.exports = RadioBox;
+
+/***/ },
+/* 5 */
+/*!******************************************!*\
+  !*** ./components/component/checkbox.js ***!
+  \******************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var CheckBox = React.createClass({
+	  displayName: "CheckBox",
+	
+	  handleClick: function handleClick(e) {
+	    e.stopPropagation();
+	    alert(1);
+	  },
+	  handleChange: function handleChange(e) {
+	    alert(1);
+	  },
+	  getInitialState: function getInitialState() {
+	    return { data: [{
+	        key: "CheckBox1",
+	        id: "CheckBox1",
+	        name: 'CheckBox1',
+	        text: 'CheckBox1',
+	        value: "list1",
+	        checked: "checked"
+	      }, {
+	        key: "CheckBox2",
+	        id: "CheckBox2",
+	        name: 'CheckBox2',
+	        text: 'CheckBox2',
+	        value: "list2"
+	      }, {
+	        key: "CheckBox3",
+	        id: "CheckBox3",
+	        name: 'CheckBox3',
+	        text: 'CheckBox3',
+	        value: "list3",
+	        disabled: "disabled",
+	        checked: "checked"
+	      }, {
+	        key: "CheckBox4",
+	        id: "CheckBox4",
+	        name: 'CheckBox4',
+	        text: 'CheckBox4',
+	        value: "list4",
+	        disabled: "disabled"
+	      }] };
+	  },
+	  render: function render() {
+	    var handleChange = this.handleChange;
+	    var nodes = this.state.data.map(function (list) {
+	      return React.createElement(
+	        "div",
+	        { className: "check-box", key: list.key },
+	        React.createElement("input", { type: "checkbox", id: list.id, name: list.name, value: list.value, defaultChecked: list.checked, disabled: list.disabled, onChange: handleChange }),
+	        React.createElement(
+	          "label",
+	          { htmlFor: list.id },
+	          list.text
+	        )
+	      );
+	    });
+	    return React.createElement(
+	      "div",
+	      null,
+	      nodes
+	    );
+	  }
+	});
+	module.exports = CheckBox;
+
+/***/ },
+/* 6 */
 /*!*********************************************!*\
   !*** ./components/commentbox/CommentBox.js ***!
   \*********************************************/
@@ -98,8 +238,8 @@
 
 	'use strict';
 	
-	var CommentForm = __webpack_require__(/*! ./CommentForm.js */ 5);
-	var CommentList = __webpack_require__(/*! ./CommentList.js */ 6);
+	var CommentForm = __webpack_require__(/*! ./CommentForm.js */ 7);
+	var CommentList = __webpack_require__(/*! ./CommentList.js */ 8);
 	
 	var CommentBox = React.createClass({
 	  displayName: 'CommentBox',
@@ -163,7 +303,7 @@
 	module.exports = CommentBox;
 
 /***/ },
-/* 5 */
+/* 7 */
 /*!**********************************************!*\
   !*** ./components/commentbox/CommentForm.js ***!
   \**********************************************/
@@ -223,7 +363,7 @@
 	module.exports = CommentForm;
 
 /***/ },
-/* 6 */
+/* 8 */
 /*!**********************************************!*\
   !*** ./components/commentbox/CommentList.js ***!
   \**********************************************/
@@ -231,7 +371,7 @@
 
 	"use strict";
 	
-	var Comment = __webpack_require__(/*! ./Comment.js */ 7);
+	var Comment = __webpack_require__(/*! ./Comment.js */ 9);
 	
 	var CommentList = React.createClass({
 	  displayName: "CommentList",
@@ -254,7 +394,7 @@
 	module.exports = CommentList;
 
 /***/ },
-/* 7 */
+/* 9 */
 /*!******************************************!*\
   !*** ./components/commentbox/Comment.js ***!
   \******************************************/
@@ -280,7 +420,7 @@
 	module.exports = Comment;
 
 /***/ },
-/* 8 */
+/* 10 */
 /*!**********************************!*\
   !*** ./components/nav/navbox.js ***!
   \**********************************/
@@ -288,8 +428,8 @@
 
 	'use strict';
 	
-	var NavButton = __webpack_require__(/*! ./navbutton.js */ 9);
-	var NavSearch = __webpack_require__(/*! ./navsearch.js */ 10);
+	var NavButton = __webpack_require__(/*! ./navbutton.js */ 11);
+	var NavSearch = __webpack_require__(/*! ./navsearch.js */ 12);
 	
 	var NavBox = React.createClass({
 	  displayName: 'NavBox',
@@ -328,7 +468,7 @@
 	module.exports = NavBox;
 
 /***/ },
-/* 9 */
+/* 11 */
 /*!*************************************!*\
   !*** ./components/nav/navbutton.js ***!
   \*************************************/
@@ -398,7 +538,7 @@
 	module.exports = NavButton;
 
 /***/ },
-/* 10 */
+/* 12 */
 /*!*************************************!*\
   !*** ./components/nav/navsearch.js ***!
   \*************************************/
@@ -427,62 +567,6 @@
 	  }
 	});
 	module.exports = NavSearch;
-
-/***/ },
-/* 11 */
-/*!******************************************!*\
-  !*** ./components/component/radiobox.js ***!
-  \******************************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var RadioBox = React.createClass({
-	  displayName: "RadioBox",
-	
-	  handleClick: function handleClick(e) {
-	    var $this = $(e.currentTarget);
-	    if (!$this.attr("checked")) {
-	      $this.parent().find("[checked='checked']").removeAttr("checked");
-	      $this.attr("checked", "checked");
-	    }
-	  },
-	  getInitialState: function getInitialState() {
-	    return { data: [{
-	        id: "radio1", name: 'radio', text: 'list1', value: "list1"
-	      }, {
-	        id: "radio2", name: 'radio', text: 'list2', value: "list2"
-	      }, {
-	        id: "radio3", name: 'radio', text: 'list3', value: "list3"
-	      }] };
-	  },
-	  render: function render() {
-	    var handleClick = this.handleClick;
-	    var nodes = this.state.data.map(function (list) {
-	      return React.createElement(
-	        "div",
-	        { className: "radio-box", key: list.id, onClick: handleClick },
-	        React.createElement("input", { type: "radio", name: list.name, value: list.value }),
-	        React.createElement(
-	          "span",
-	          { className: "outer" },
-	          React.createElement("span", { className: "inner" })
-	        ),
-	        React.createElement(
-	          "label",
-	          null,
-	          list.text
-	        )
-	      );
-	    });
-	    return React.createElement(
-	      "div",
-	      null,
-	      nodes
-	    );
-	  }
-	});
-	module.exports = RadioBox;
 
 /***/ }
 /******/ ]);
