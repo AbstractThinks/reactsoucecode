@@ -5,7 +5,7 @@ var NavButton = React.createClass({
     }
   },
   handleMouseOver: function() {
-
+    
   },
   handleMouseOut: function() {
 

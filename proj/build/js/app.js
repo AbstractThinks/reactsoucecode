@@ -49,25 +49,19 @@
 
 	'use strict';
 	
-	__webpack_require__(/*! ../sass/main.scss */ 1);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../sass/main.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	var SearchBox = __webpack_require__(/*! ./component/searchbox.js */ 3);
+	var RadioBox = __webpack_require__(/*! ./component/radiobox.js */ 11);
 	var CommentBox = __webpack_require__(/*! ./commentbox/CommentBox.js */ 4);
 	var NavBox = __webpack_require__(/*! ./nav/navbox.js */ 8);
 	
 	ReactDOM.render(React.createElement(SearchBox, null), document.getElementById('searchbox'));
+	ReactDOM.render(React.createElement(RadioBox, null), document.getElementById('radiobox'));
 	ReactDOM.render(React.createElement(CommentBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('commentbox'));
 	ReactDOM.render(React.createElement(NavBox, { url: 'http://127.0.0.1:8889' }), document.getElementById('navbox'));
 
 /***/ },
-/* 1 */
-/*!************************!*\
-  !*** ./sass/main.scss ***!
-  \************************/
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 1 */,
 /* 2 */,
 /* 3 */
 /*!*******************************************!*\
@@ -433,6 +427,62 @@
 	  }
 	});
 	module.exports = NavSearch;
+
+/***/ },
+/* 11 */
+/*!******************************************!*\
+  !*** ./components/component/radiobox.js ***!
+  \******************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var RadioBox = React.createClass({
+	  displayName: "RadioBox",
+	
+	  handleClick: function handleClick(e) {
+	    var $this = $(e.currentTarget);
+	    if (!$this.attr("checked")) {
+	      $this.parent().find("[checked='checked']").removeAttr("checked");
+	      $this.attr("checked", "checked");
+	    }
+	  },
+	  getInitialState: function getInitialState() {
+	    return { data: [{
+	        id: "radio1", name: 'radio', text: 'list1', value: "list1"
+	      }, {
+	        id: "radio2", name: 'radio', text: 'list2', value: "list2"
+	      }, {
+	        id: "radio3", name: 'radio', text: 'list3', value: "list3"
+	      }] };
+	  },
+	  render: function render() {
+	    var handleClick = this.handleClick;
+	    var nodes = this.state.data.map(function (list) {
+	      return React.createElement(
+	        "div",
+	        { className: "radio-box", key: list.id, onClick: handleClick },
+	        React.createElement("input", { type: "radio", name: list.name, value: list.value }),
+	        React.createElement(
+	          "span",
+	          { className: "outer" },
+	          React.createElement("span", { className: "inner" })
+	        ),
+	        React.createElement(
+	          "label",
+	          null,
+	          list.text
+	        )
+	      );
+	    });
+	    return React.createElement(
+	      "div",
+	      null,
+	      nodes
+	    );
+	  }
+	});
+	module.exports = RadioBox;
 
 /***/ }
 /******/ ]);
