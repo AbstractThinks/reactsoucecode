@@ -7,7 +7,7 @@ module.exports = {
   },
   output:{
 		path:'./build',
-		filename: '/js/[name].js',
+		filename: '/[name].min.js',
 		chunkFilename: '[id].bundle.js'
   },
   module: {

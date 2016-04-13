@@ -20,12 +20,14 @@
   },
   "homepage": "https://github.com/emobossemo/reactsoucecode#readme",
   "devDependencies": {
+    "babel-core": "^6.7.6",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "koa": "^1.2.0",
+    "koa-static": "^2.0.0",
     "node-sass": "^3.4.2",
     "sass-loader": "^3.2.0",
-    "webpack": "^1.12.15",
-    "babel-preset-react": "^6.5.0",
-    "babel-loader": "^6.2.4",
-    "babel-core": "^6.7.6"
+    "webpack": "^1.12.15"
   }
 }
