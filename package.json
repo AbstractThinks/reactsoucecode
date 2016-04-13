@@ -1,0 +1,31 @@
+{
+  "name": "reactsoucecode",
+  "version": "1.0.0",
+  "description": "ReactSouceCode源码分析学习",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emobossemo/reactsoucecode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emobossemo/reactsoucecode/issues"
+  },
+  "homepage": "https://github.com/emobossemo/reactsoucecode#readme",
+  "devDependencies": {
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.2.0",
+    "webpack": "^1.12.15",
+    "babel-preset-react": "^6.5.0",
+    "babel-loader": "^6.2.4",
+    "babel-core": "^6.7.6"
+  }
+}
