@@ -35,7 +35,8 @@
 
 
 
-###创建actionCreator
+###创建actionCreator(action.js)
+
         var actionCreator = function() {
             pretty obvious now) and returns it
             return {
@@ -43,17 +44,60 @@
             }
         }
 
-###创建reducer
+###创建reducer(reducer.js)
 
-        import { createStore } from 'redux'
-        var store_0 = createStore(() => {})；
-        var reducer = function (...args) {
-            console.log('Reducer was called with args', args)
-        }；
-        var store_1 = createStore(reducer)；
-        // store_1 = { 
-        //    dispatch: [Function: dispatch],
-        //    subscribe: [Function: subscribe],
-        //    getState: [Function: getState],
-        //    replaceReducer: [Function: replaceReducer] 
-        // }
+        let todoReducer = function (state = [], action) {
+            switch (action.type) {
+                case 'add_todo' : 
+                    return state.slice(0).concat({
+                        text: action.text,
+                        completed: false
+                    });
+                    break;
+                default:
+                    return state;
+            }
+        }
+
+###创建store(store.js)
+
+        var store = Redux.createStore(todoReducer);
+
+###创建component(component.js)
+
+        let App = React.createClass({
+            getInitialState : function () {
+                return {
+                    items : store.getState()
+                }   
+            },
+            componentDidMount : function () {
+                let unsubscribe = store.subscribe(this.onChange);
+            },
+            onChange : function () {
+                this.setState({
+                    item: store.getState()
+                });
+            },
+            handleAdd : function () {
+                let input = ReactDOM.findDOMNode(this.refs.todo);
+                let value = input.value.trim();
+                if (value) {
+                    store.dispatch(addTodoActions(value));
+                }
+                input.value = '';
+            },
+            render : function () {
+                return (
+                    <div>
+                        <input ref="todo" type="text" placeholder='please input' style={{marginRight:'10px'}} />
+                        <button onClick={this.handleAdd}>add button</button>
+                        <ul>
+                            {this.state.items.map(function(item){
+                                return <li>{item.text}</li>;
+                            })}
+                        </ul>
+                    </div>          
+                )
+            }
+        });
