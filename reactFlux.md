@@ -11,6 +11,8 @@
 >`Store`（数据层）：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面(store.js)
 > 1.`controller.js`调用`action.js`，`action.js`调用`dispatcher.js`,`dispatcher.js`调用`store.js`,最后`controller.js`添加监听事件回调函数，确保`store.js`触发事件后更新`view`层
 
+![](./img/flux2.png)
+
 ###view(controller.js)
 
 myButtonController.js
