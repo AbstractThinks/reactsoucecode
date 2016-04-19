@@ -2,6 +2,10 @@
 
 [redux tutorial](https://github.com/react-guide/redux-tutorial-cn)
 
+[redux实战参考](http://bluereader.org/article/89427686)
+
+[redux参考理解1](https://segmentfault.com/a/1190000004208610)
+
 #redux
 
 ![](./img/redux.jpg)
