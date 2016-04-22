@@ -8,6 +8,8 @@
 
 #redux
 
+![](./img/redux.png)
+![](./img/redux-core.jpg)
 ![](./img/redux.jpg)
 
 >##Action
