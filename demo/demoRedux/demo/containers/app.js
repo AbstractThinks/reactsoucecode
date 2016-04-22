@@ -11,6 +11,7 @@ function mapStateToProps(state) {
 	}
 }
 
+// export default connect(mapStateToProps, CounterActions)(Counter);
 export default connect(mapStateToProps, CounterActions)(Counter);
 //第二种写法
 //将action的所有方法绑定到props上
