@@ -11,7 +11,6 @@ class App extends Component {
     const { dispatch, visibleTodos, visibilityFilter } = this.props
     return (
       <div>
-        <button onClick={() => actionCreator.addTodo('44444')}>+</button>
         <AddTodo
           onAddClick={text =>
             dispatch(actionCreator.addTodo(text))

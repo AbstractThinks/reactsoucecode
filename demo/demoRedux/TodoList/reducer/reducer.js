@@ -24,9 +24,7 @@ function todos(state = [], action) {
     case COMPLETE_TODO:
       return [
         ...state.slice(0, action.index),
-        Object.assign({}, state[action.index], {
-          completed: true
-        }),
+        Object.assign({}, state[action.index], {completed: true }),
         ...state.slice(action.index + 1)
       ]
     default:
