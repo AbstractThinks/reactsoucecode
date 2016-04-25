@@ -2,6 +2,7 @@
 
 [参考](http://cn.redux.js.org/docs/recipes/ReducingBoilerplate.html)
 [项目生产代码参考](http://cn.redux.js.org/docs/recipes/index.html)
+[参考1](http://www.tuicool.com/articles/vEnMFzz)
 
 >###action
 >是store的**唯一**数据来源, 可以通过store.dispatch()将action传到store，并出发reducer
@@ -108,6 +109,19 @@
           todos
         });
         export default todoApp;
+
+        var reducers = {
+          todos: (state, action) { //预期此处的 state 参数是全局 state.todos 属性
+            switch (action.type) {...} //返回的 new state 更新到全局 state.todos 属性中
+          },
+          activeFilter: (state, action) { //预期拿到 state.activeFilter 作为此处的 state
+            switch (action.type) {...} //new state 更新到全局 state.activeFilter 属性中
+          }
+        }
+        //返回一个 rootReducer 函数
+        //在内部将 reducers.todos 函数的返回值，挂到 state.todos 中
+        //在内部将 reducers.activeFilter 函数的返回值，挂到 state.activeFilter 中
+        var rootReducer = combineReducers(reducers)
 
 >store下的state正是reducer每一个处理后最终返回数据
 

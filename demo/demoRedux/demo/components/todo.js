@@ -4,10 +4,10 @@ class Counter extends Component {
 		super();
 	}
 	render() {
-		const {increment, incrementIfOdd, incrementAsync, decrement, counter, dispatch} = this.props;
+		const {increment, incrementIfOdd, incrementAsync, decrement, counters, dispatch} = this.props;
 		return (
 			<p>
-				Clicked: {counter} times
+				Clicked: {counters} times
 				{' '}
 				<button onClick={increment}>+</button>
 				{' '}
