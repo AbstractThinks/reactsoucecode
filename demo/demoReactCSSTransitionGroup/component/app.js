@@ -2,18 +2,15 @@
 
 
 import React from 'react';
-import render from 'react-dom';
+import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-require('../sass/app.scss')
 
 class CSSTRANSITION extends React.Component {
     constructor(props) {
         super(props);
-        this.displayName = '';
+        //初始化state
+        this.state = {items: ['hello', 'world', 'click', 'me']};
     }
-    getInitialState(){
-    	return {items: ['hello', 'world', 'click', 'me']};
-  	}
 	handleAdd(){
 		var newItems =
 		this.state.items.concat([prompt('Enter some text')]);
@@ -35,7 +32,8 @@ class CSSTRANSITION extends React.Component {
 
 		return (
 			<div>
-				<button onClick={this.handleAdd}>Add Item</button>
+				<button onClick={this.handleAdd.bind(this)}>Add Item</button>
+				<button onClick={this.handleRemove.bind(this)}>remove Item</button>
 				<ReactCSSTransitionGroup transitionName="example">
 				{items}
 				</ReactCSSTransitionGroup>
@@ -44,5 +42,5 @@ class CSSTRANSITION extends React.Component {
 	}
 }
 
-render(<CSSTRANSITION />, document.getElementById('root'));
+ReactDOM.render(<CSSTRANSITION />, document.getElementById('root'));
 export default CSSTRANSITION;
