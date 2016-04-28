@@ -6,13 +6,43 @@ import ReactDOM from 'react-dom';
 import AnimationItem from './AnimationItem';
 import ReactTransitionGroup from 'react-addons-transition-group';
 
+class ITEM extends React.Component {
+	componentDidMount(){
+	    console.log("componentDidMount")
+	  }
+	   componentWillEnter (callback) {
+    console.log("componentWillEnter")
+
+  }
+    componentWillLeave (callback) {
+    console.log("componentWillLeave")
+
+  }
+	componentWillUnmount () {
+    	console.log("componentWillUnmount")
+    	this.componentWillLeave()
+  	}
+
+  	render() {
+  		return (
+  			<ReactTransitionGroup key={this.props.children}>
+				<div id={this.props.children}>
+					{this.props.children}
+				</div>
+			</ReactTransitionGroup>
+  		)
+  	}
+}
+
+
+
+
 class CSSTRANSITION extends React.Component {
     constructor(props) {
         super(props);
         //初始化state
         this.state = {items: ['hello', 'world', 'click', 'me']};
     }
-	
 	handleAdd(){
 		var newItems =
 		this.state.items.concat([prompt('Enter some text')]);
@@ -27,11 +57,9 @@ class CSSTRANSITION extends React.Component {
 		const items = this.state.items.map((item, i) => {
 			return (
 
-				<ReactTransitionGroup key={item}>
-					<AnimationItem transitionName="example" key={item} >
-						{item}
-					</AnimationItem>
-				</ReactTransitionGroup>
+				<ITEM key={item}>
+					{item}
+				</ITEM>
 				
 			);
 		});
@@ -48,5 +76,5 @@ class CSSTRANSITION extends React.Component {
 	}
 }
 
-ReactDOM.render(<CSSTRANSITION />,  document.getElementById('root'));
+ReactDOM.render(<CSSTRANSITION />,  document.getElementById('container'));
 export default CSSTRANSITION;

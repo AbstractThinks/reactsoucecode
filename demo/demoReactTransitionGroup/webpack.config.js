@@ -3,7 +3,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-       app: './component/reactTransitionGroup2.js'
+       app: './component/app.js'
   },
   output:{
 		path:'./build',
