@@ -3,16 +3,35 @@ import { render, findDOMNode } from 'react-dom';
 import ReactTransitionGroup from 'react-addons-transition-group';
 
 class Box extends React.Component {
+  componentDidMount(){
+    console.log("componentDidMount")
+  }
+  // componentWillAppear(callback) {
+  //   console.log("componentWillAppear")
+  // }
+  // componentDidAppear() {
+  //   console.log("componentDidAppear")
+  // }
   componentWillEnter (callback) {
     console.log("componentWillEnter")
     const el = findDOMNode(this);
-    // TweenMax.fromTo(el, 0.3, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
+    console.log(el)
+    TweenMax.fromTo(el, 0.3, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
   }
-
+  componentWillUnmount () {
+    console.log("componentWillUnmount")
+  }
   componentWillLeave (callback) {
     console.log("componentWillLeave")
     const el = findDOMNode(this);
-    // TweenMax.fromTo(el, 0.3, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
+    console.log(el)
+ 
+    TweenMax.fromTo(el, 0.3, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
+
+  }
+
+   componentDidLeave () {
+    console.log("componentDidLeave")
   }
 
   render () {
@@ -38,10 +57,12 @@ class Page extends React.Component {
 
     let {shouldShowBox} = this.state
     return <div className="page">
-
-      <ReactTransitionGroup>
+      {
+        <ReactTransitionGroup>
         { shouldShowBox?<Box/>:null}
-      </ReactTransitionGroup>
+        </ReactTransitionGroup>
+      }
+      
 
       <button
         className="toggle-btn"
