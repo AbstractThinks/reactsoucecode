@@ -1,0 +1,30 @@
+html, body, #container {
+  height: 100%;
+  overflow: hidden;
+}
+.page {
+  height: 100%;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: #3498DB;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 80px;
+  padding: 10px;
+  font-size: 18px;
+}
