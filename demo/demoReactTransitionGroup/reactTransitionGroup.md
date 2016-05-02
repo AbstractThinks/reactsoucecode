@@ -1,7 +1,13 @@
 #ReactTransitionGroup(未完成)
 
 >###使用教程
+[例子](./component/)
 
+    <ReactTransitionGroup component="ul" className="animated-list">
+      {items}
+    </ReactTransitionGroup>
+
+`component`属性默认会被解析成`span`标签，**注意**`若ReactTransitionGroup`被删除，则不会促发`ReactTransitionGroup`下`children的componentWillEnter，componentWillLeave...`等方法
 
 >###componentWillEnter(callback)
 
@@ -10,7 +16,7 @@
 引用`require('react-addons-transition-group')`
 
 >###componentWillAppear(callback)
-该函数会和componentDidMount()同时调用，并阻止其他动画发生直到callback函数执行之后
+该函数会和componentDidMount()调用之后调用，并阻止其他动画发生直到callback函数执行之后
 
 >###componentDidAppear()
 该函数会在componentWillAppear(callback)中的callback函数执行之后被调用
@@ -28,7 +34,7 @@
 
 >###componentDidLeave()
 
-该函数在`willLeave callback`被调用的时候调用（与`componentWillUnmount`是同一时间）。
+该函数在`willLeave callback`被调用的时候调用（在`componentWillUnmount`之前调用）。
 
         <ReactTransitionGroup component="ul" className="animated-list">
           ...

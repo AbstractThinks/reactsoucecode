@@ -1,51 +1,16 @@
-
-
-
 import React from 'react';
-import ReactDOM from 'react-dom';
-import AnimationItem from './AnimationItem';
 import ReactTransitionGroup from 'react-addons-transition-group';
+import ReactDOM from 'react-dom';
+import Item from './item';
 
-class ITEM extends React.Component {
-	componentDidMount(){
-	    console.log("componentDidMount")
-	  }
-	   componentWillEnter (callback) {
-    console.log("componentWillEnter")
-
-  }
-    componentWillLeave (callback) {
-    console.log("componentWillLeave")
-
-  }
-	componentWillUnmount () {
-    	console.log("componentWillUnmount")
-    	this.componentWillLeave()
-  	}
-
-  	render() {
-  		return (
-  			<ReactTransitionGroup key={this.props.children}>
-				<div id={this.props.children}>
-					{this.props.children}
-				</div>
-			</ReactTransitionGroup>
-  		)
-  	}
-}
-
-
-
-
-class CSSTRANSITION extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
-        //初始化state
+        this.displayName = 'App';
         this.state = {items: ['hello', 'world', 'click', 'me']};
     }
-	handleAdd(){
-		var newItems =
-		this.state.items.concat([prompt('Enter some text')]);
+    handleAdd(){
+		var newItems = this.state.items.concat([prompt('Enter some text')]);
 		this.setState({items: newItems});
 	}
 	handleRemove(i){
@@ -53,28 +18,31 @@ class CSSTRANSITION extends React.Component {
 		newItems.splice(i, 1);
 		this.setState({items: newItems});
 	}
+	componentWillUnmount () {
+		console.log("App componentWillUnmount")
+		// this.componentWillLeave()
+	}
     render() {
-		const items = this.state.items.map((item, i) => {
+    	const items = this.state.items.map((item, i) => {
 			return (
-
-				<ITEM key={item}>
-					{item}
-				</ITEM>
+				
+					<Item key={item}>
+						{item}
+					</Item>
 				
 			);
 		});
-
-		return (
-			<div>
-				<button onClick={this.handleAdd.bind(this)}>Add Item</button>
+        return(
+        	<div>
+        		<button onClick={ this.handleAdd.bind(this) } > Add Item </button>
 				<button onClick={this.handleRemove.bind(this)}>remove Item</button>
-				
-				{items}
-				
-			</div>
-		);
-	}
-}
+        		<ReactTransitionGroup component="ul" className="animated-list">
+        		{items}
+        		</ReactTransitionGroup>
+        	</div>
 
-ReactDOM.render(<CSSTRANSITION />,  document.getElementById('container'));
-export default CSSTRANSITION;
+        );
+    }
+}
+ReactDOM.render(<App />,  document.getElementById('container'));
+export default App;
